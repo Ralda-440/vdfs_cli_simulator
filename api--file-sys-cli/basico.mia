@@ -1,0 +1,131 @@
+#ENTRADA PRIMER PARTE MIA
+#Seccion B - DANIEL CHICAS
+#1S 2024
+#CAMBIAR /home/daniel -> POR SU USUARIO EJ ->  /home/SU_USER 
+#CAMBIAR LOS IDS
+
+#DISCO X
+#mkdisk -param=x -size=30 -path=/home/daniel/archivos/Disco.dsk # ERR PARAMETROS
+
+#CREACION DE DISCOS---------------------------------------------------
+mkdisk -size=50 -unit=M -fit=F                   # 50M A
+mkdisk -unit=K -size=51200 -fit=B                # 50M B
+mkdisk -size=10                                   # 10M C
+mkdisk -size=51200 -unit=K                        # 50M D
+mkdisk -size=20 -unit=M -fit=W                   # 20M E
+mkdisk -size=50 -unit=M -fit=F                   # 50M F X
+mkdisk -size=50 -unit=M -fit=F                   # 50M G X
+mkdisk -size=51200 -unit=K                        # 50M H X
+mkdisk -size=51200 -unit=K                        # 50M I X
+
+#ELIMINACION DE DISCOS---------------------------------------------------
+#rmdisk -driveletter=Z #ERR RUTA NO ENCONTRADA
+rmdisk -driveletter=F
+rmdisk -driveletter=G
+rmdisk -driveletter=H
+rmdisk -driveletter=I
+
+
+#CREACION DE PARTICIONES---------------------------------------------------
+#DISCO 1
+#fdisk -type=P -unit=B -name=Part0 -size=10485760 -driveletter=Z -fit=B # ERR RUTA NO ENCONTRADA
+fdisk -type=P -unit=B -name=Part1 -size=10485760 -driveletter=A -fit=B # 10M
+fdisk -type=P -unit=K -name=Part2 -size=10240 -driveletter=A -fit=B    # 10M
+fdisk -type=P -unit=M -name=Part3 -size=10 -driveletter=A -fit=B       # 10M
+fdisk -type=P -unit=B -name=Part4 -size=10485760 -driveletter=A -fit=B # 10M
+#fdisk -type=P -unit=B -name=Part5 -size=10485760 -driveletter=A -fit=B #ERR PARTICION 5
+# LIBRE DISCO 1: 50-4*10 = 10 -> 20%
+
+#DISCO 2
+#fdisk -type=L -unit=K -name=Part6 -size=10240 -driveletter=B -fit=B #ERRROR no hay una extendida
+#fdisk -type=L -unit=K -name=Part7 -size=10240 -driveletter=B -fit=B #ERRROR no hay una extendida
+fdisk -type=P -unit=K -name=Part8 -size=10240 -driveletter=B -fit=B    # 10M
+fdisk -type=P -unit=M -name=Part9 -size=10 -driveletter=B -fit=F       # 10M
+fdisk -type=P -unit=K -name=Part10 -size=5120 -driveletter=B -fit=W    # 5M
+fdisk -type=E -unit=M -name=Part11 -size=20 -driveletter=B            # 20M
+fdisk -type=L -unit=K -name=Part12 -size=1536 -driveletter=B          # 1.5M
+fdisk -type=L -unit=K -name=Part13 -size=1536 -driveletter=B -fit=B
+fdisk -type=L -unit=K -name=Part14 -size=1536 -driveletter=B -fit=F
+fdisk -type=L -unit=K -name=Part15 -size=1536 -driveletter=B -fit=B
+fdisk -type=L -unit=K -name=Part16 -size=1536 -driveletter=B -fit=W
+fdisk -type=L -unit=K -name=Part17 -size=1536 -driveletter=B -fit=B
+fdisk -type=L -unit=K -name=Part18 -size=1536 -driveletter=B -fit=F
+fdisk -type=L -unit=K -name=Part79 -size=1536 -driveletter=B -fit=B
+fdisk -type=L -unit=K -name=Part20 -size=1536 -driveletter=B -fit=F
+fdisk -type=L -unit=K -name=Part21 -size=1536 -driveletter=B -fit=B
+fdisk -type=L -unit=K -name=Part22 -size=1536 -driveletter=B -fit=W
+fdisk -type=L -unit=K -name=Part23 -size=1536 -driveletter=B -fit=B
+fdisk -type=L -unit=K -name=Part24 -size=1536 -driveletter=B -fit=F
+# LIBRE DISCO 2: 50-45 = 5 -> 10%
+# LIBRE EXTENDIDA 2: 20-13*1.5 = 0.5 -> 2.5% (por los EBR deberia ser menos)
+
+#DISCO 3
+#fdisk -type=P -unit=M -name=Part25 -size=20 -driveletter=C    # 20M #ERR FALTA ESPACIO
+fdisk -type=P -unit=M -name=Part26 -size=4 -driveletter=C     #4M
+fdisk -type=P -unit=M -name=Part27 -size=4 -driveletter=C     #4M
+fdisk -type=P -unit=M -name=Part28 -size=1 -driveletter=C     #1M
+#LIBRE DISCO 3: 10-9= 1 -> 10%
+
+
+#ELIMINAR Y AGREGAR ESPACIO DISCO 3
+#fdisk -add=-1000 -unit=m -driveletter=C -name=Part26 # ERR SIZE NEGATIVO
+#fdisk -add=1000 -unit=m -driveletter=C -name=Part26 # ERR PARTICION NO TIENE ESPACIO
+fdisk -add=-2 -unit=M -driveletter=C -name=Part26 # 4-2= 2M
+fdisk -delete=Full -name=Part27 -driveletter=C # 0
+fdisk -add=4 -unit=M -driveletter=C -name=Part26 # 4+2= 6M
+#LIBRE DISCO 3: 10-7= 3 -> 30%
+
+#DISCO 5
+fdisk -type=E -unit=K -name=Part29 -size=5120 -driveletter=E -fit=B # 5MB
+fdisk -type=L -unit=K -name=Part30 -size=1024 -driveletter=E -fit=B # 1MB
+fdisk -type=P -unit=K -name=Part31 -size=5120 -driveletter=E -fit=B # 5MB
+fdisk -type=L -unit=K -name=Part32 -size=1024 -driveletter=E -fit=B # 1MB
+fdisk -type=L -unit=K -name=Part33 -size=1024 -driveletter=E -fit=B # 1MB
+fdisk -type=L -unit=K -name=Part34 -size=1024 -driveletter=E -fit=B # 1MB
+# LIBRE DISCO 5: 20-10 = 5 -> 50%
+# LIBRE EXTENDIDA 2: 5-4 = 1 -> 20% (por los EBR deberia ser menos)
+
+#MONTAR PARTICIONES---------------------------------------------------
+#DISCO X
+#mount -driveletter=A -name=Part5 #ERR PARTICION NO EXISTE
+#DISCO 1
+mount -driveletter=A -name=Part1 #791a -> id1 -> cambiar el 791a por el ID que a ustedes les genera
+mount -driveletter=A -name=Part2 #791b -> id2 -> cambiar el 791b por el ID que a ustedes les genera
+#mount -driveletter=A -name=Part1 #ERR PARTICION YA MONTADA
+#DISCO 2
+#mount -driveletter=B -name=Part11 #ERR MONTAR EXTENDIDA
+mount -driveletter=B -name=Part8 #792a -> id3 -> cambiar el 792a por el ID que a ustedes les genera
+mount -driveletter=B -name=Part9 #792b -> id4 -> cambiar el 792b por el ID que a ustedes les genera
+#DISCO 3
+mount -driveletter=C -name=Part26 #793a -> id5 -> cambiar el 793a por el ID que a ustedes les genera
+#DISCO 5
+mount -driveletter=E -name=Part31 #794a -> id6 -> cambiar el 794a por el ID que a ustedes les genera
+
+#DESMONTAR PARTICIONES---------------------------------------------------
+#unmount -id=IDx #ERR NO EXISTE ID
+#DISCO 1
+unmount -id=A116 #-> id1
+#unmount -id=791a #ERR PARTICION YA DESMONTADA -> id1
+#DISCO 2
+unmount -id=B216 #-> id4
+
+#REPORTES---------------------------------------------------
+#DISCO 1
+#rep -id=791a -path=./home/daniel/archivos/reports/reporte1.jpg -name=mbr #ERR ID NO ENCONTRADO -> id1
+rep -id=A216 -path=./home/daniel/archivos/reports/reporte2.jpg -name=disk #-> id2
+rep -id=A216 -path=./home/daniel/archivos/reports/reporte3.jpg -name=mbr #-> id2
+
+#DISCO 2
+#rep -id=792b -path=./home/daniel/archivos/reports/reporte4.jpg -name=mbr #ERR ID NO ENCONTRADO -> id4
+rep -id=B116 -path=./home/daniel/archivos/reports/reporte5.jpg -name=disk #-> id3
+rep -id=B116 -path=./home/daniel/archivos/reports/reporte6.jpg -name=mbr #-> id3
+
+#DISCO 3
+#rep -id=IDx -path=./home/daniel/archivos/reports/reporte7.jpg -name=mbr #ERR ID NO ENCONTRADO
+rep -id=C116 -path=./home/daniel/archivos/reports/reporte8.jpg -name=disk #-> id5
+rep -id=C116 -path=./home/daniel/archivos/reports/reporte9.jpg -name=mbr #-> id5
+
+#DISCO 5
+#rep -id=IDx -path=./home/daniel/archivos/reports/reporte10.jpg -name=mbr #ERR ID NO ENCONTRADO
+rep -id=E216 -path=./home/daniel/archivos/reports/reporte11.jpg -name=disk #-> id6
+rep -id=E216 -path=./home/daniel/archivos/reports/reporte12.jpg -name=mbr #-> id6

@@ -1,0 +1,3865 @@
+
+	digraph {
+		node [shape=plaintext]
+		rankdir=LR
+	
+	Inodo0 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Raiz</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 0</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:20</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:20</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:20</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">0</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">5</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">10</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">15</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">20</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">25</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>777</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo0:f0 -> Bloque0
+Inodo0:f1 -> Bloque5
+Inodo0:f2 -> Bloque10
+Inodo0:f3 -> Bloque15
+Inodo0:f4 -> Bloque20
+Inodo0:f5 -> Bloque25
+
+	Bloque0 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 0</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">0</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td>users.txt</td><td port="f2">1</td>
+		</tr>
+		
+		<tr>
+			<td>bin</td><td port="f3">2</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque0:f2 -> Inodo1
+Bloque0:f3 -> Inodo2
+
+	Inodo1 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>users.txt</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 1</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>147</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:20</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:20</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:20</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">2</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">3</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>1</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>774</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo1:f0 -> Bloque1
+Inodo1:f1 -> Bloque2
+Inodo1:f2 -> Bloque3
+
+	Bloque1 [shape=box label="Bloque 1
+----------------------
+1,U,root,root,123
+2,U,root,usuario1,password
+3,U,usuarios,user1,"]
+
+	Bloque2 [shape=box label="Bloque 2
+----------------------
+abc
+0,U,usuarios,user2,abc
+1,G,root
+2,G,usuarios
+3,G,adm
+0,G,mai"]
+
+	Bloque3 [shape=box label="Bloque 3
+----------------------
+l
+5,G,news
+6,G,sys
+"]
+
+	Inodo2 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>bin</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 2</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">4</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo2:f0 -> Bloque4
+
+	Bloque4 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 4</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">2</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Bloque5 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 5</b></font></td>
+	</tr>
+		<tr>
+			<td>boot</td><td port="f0">3</td>
+		</tr>
+		
+		<tr>
+			<td>cdrom</td><td port="f1">4</td>
+		</tr>
+		
+		<tr>
+			<td>dev</td><td port="f2">5</td>
+		</tr>
+		
+		<tr>
+			<td>etc</td><td port="f3">6</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque5:f0 -> Inodo3
+Bloque5:f1 -> Inodo4
+Bloque5:f2 -> Inodo5
+Bloque5:f3 -> Inodo6
+
+	Inodo3 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>boot</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 3</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">6</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo3:f0 -> Bloque6
+
+	Bloque6 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 6</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">3</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo4 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>cdrom</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 4</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">7</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo4:f0 -> Bloque7
+
+	Bloque7 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 7</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">4</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo5 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>dev</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 5</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">8</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo5:f0 -> Bloque8
+
+	Bloque8 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 8</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">5</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo6 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>etc</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 6</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">9</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo6:f0 -> Bloque9
+
+	Bloque9 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 9</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">6</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Bloque10 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 10</b></font></td>
+	</tr>
+		<tr>
+			<td>home</td><td port="f0">7</td>
+		</tr>
+		
+		<tr>
+			<td>lib</td><td port="f1">8</td>
+		</tr>
+		
+		<tr>
+			<td>lib64</td><td port="f2">9</td>
+		</tr>
+		
+		<tr>
+			<td>media</td><td port="f3">10</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque10:f0 -> Inodo7
+Bloque10:f1 -> Inodo8
+Bloque10:f2 -> Inodo9
+Bloque10:f3 -> Inodo10
+
+	Inodo7 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>home</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 7</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">11</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo7:f0 -> Bloque11
+
+	Bloque11 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 11</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">7</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td>archivos</td><td port="f2">21</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque11:f2 -> Inodo21
+
+	Inodo21 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>archivos</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 21</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">28</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">33</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo21:f0 -> Bloque28
+Inodo21:f1 -> Bloque33
+
+	Bloque28 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 28</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">21</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">7</td>
+		</tr>
+		
+		<tr>
+			<td>archivos 79</td><td port="f2">22</td>
+		</tr>
+		
+		<tr>
+			<td>user</td><td port="f3">23</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque28:f2 -> Inodo22
+Bloque28:f3 -> Inodo23
+
+	Inodo22 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>archivos 79</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 22</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">29</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo22:f0 -> Bloque29
+
+	Bloque29 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 29</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">22</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">21</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo23 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>user</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 23</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">30</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo23:f0 -> Bloque30
+
+	Bloque30 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 30</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">23</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">21</td>
+		</tr>
+		
+		<tr>
+			<td>docs</td><td port="f2">24</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque30:f2 -> Inodo24
+
+	Inodo24 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>docs</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 24</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">31</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo24:f0 -> Bloque31
+
+	Bloque31 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 31</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">24</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">23</td>
+		</tr>
+		
+		<tr>
+			<td>usac</td><td port="f2">25</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque31:f2 -> Inodo25
+
+	Inodo25 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>usac</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 25</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">32</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo25:f0 -> Bloque32
+
+	Bloque32 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 32</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">25</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">24</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Bloque33 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 33</b></font></td>
+	</tr>
+		<tr>
+			<td>carpeta1</td><td port="f0">26</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque33:f0 -> Inodo26
+
+	Inodo26 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>carpeta1</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 26</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">34</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo26:f0 -> Bloque34
+
+	Bloque34 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 34</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">26</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">21</td>
+		</tr>
+		
+		<tr>
+			<td>carpeta2</td><td port="f2">27</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque34:f2 -> Inodo27
+
+	Inodo27 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>carpeta2</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 27</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">35</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo27:f0 -> Bloque35
+
+	Bloque35 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 35</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">27</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">26</td>
+		</tr>
+		
+		<tr>
+			<td>carpeta3</td><td port="f2">28</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque35:f2 -> Inodo28
+
+	Inodo28 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>carpeta3</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 28</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">36</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo28:f0 -> Bloque36
+
+	Bloque36 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 36</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">28</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">27</td>
+		</tr>
+		
+		<tr>
+			<td>carpeta4</td><td port="f2">29</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque36:f2 -> Inodo29
+
+	Inodo29 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>carpeta4</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 29</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">37</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo29:f0 -> Bloque37
+
+	Bloque37 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 37</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">29</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">28</td>
+		</tr>
+		
+		<tr>
+			<td>carpeta5</td><td port="f2">30</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque37:f2 -> Inodo30
+
+	Inodo30 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>carpeta5</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 30</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">38</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo30:f0 -> Bloque38
+
+	Bloque38 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 38</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">30</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">29</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo8 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>lib</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 8</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">12</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo8:f0 -> Bloque12
+
+	Bloque12 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 12</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">8</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo9 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>lib64</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 9</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">13</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo9:f0 -> Bloque13
+
+	Bloque13 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 13</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">9</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo10 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>media</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 10</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">14</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo10:f0 -> Bloque14
+
+	Bloque14 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 14</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">10</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Bloque15 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 15</b></font></td>
+	</tr>
+		<tr>
+			<td>mnt</td><td port="f0">11</td>
+		</tr>
+		
+		<tr>
+			<td>opt</td><td port="f1">12</td>
+		</tr>
+		
+		<tr>
+			<td>proc</td><td port="f2">13</td>
+		</tr>
+		
+		<tr>
+			<td>run</td><td port="f3">14</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque15:f0 -> Inodo11
+Bloque15:f1 -> Inodo12
+Bloque15:f2 -> Inodo13
+Bloque15:f3 -> Inodo14
+
+	Inodo11 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>mnt</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 11</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">16</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo11:f0 -> Bloque16
+
+	Bloque16 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 16</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">11</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo12 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>opt</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 12</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">17</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo12:f0 -> Bloque17
+
+	Bloque17 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 17</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">12</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo13 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>proc</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 13</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">18</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo13:f0 -> Bloque18
+
+	Bloque18 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 18</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">13</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo14 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>run</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 14</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">19</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo14:f0 -> Bloque19
+
+	Bloque19 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 19</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">14</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Bloque20 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 20</b></font></td>
+	</tr>
+		<tr>
+			<td>sbin</td><td port="f0">15</td>
+		</tr>
+		
+		<tr>
+			<td>snap</td><td port="f1">16</td>
+		</tr>
+		
+		<tr>
+			<td>srv</td><td port="f2">17</td>
+		</tr>
+		
+		<tr>
+			<td>sys</td><td port="f3">18</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque20:f0 -> Inodo15
+Bloque20:f1 -> Inodo16
+Bloque20:f2 -> Inodo17
+Bloque20:f3 -> Inodo18
+
+	Inodo15 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>sbin</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 15</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">21</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo15:f0 -> Bloque21
+
+	Bloque21 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 21</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">15</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo16 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>snap</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 16</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">22</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo16:f0 -> Bloque22
+
+	Bloque22 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 22</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">16</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo17 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>srv</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 17</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">23</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo17:f0 -> Bloque23
+
+	Bloque23 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 23</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">17</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo18 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>sys</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 18</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">24</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo18:f0 -> Bloque24
+
+	Bloque24 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 24</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">18</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Bloque25 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 25</b></font></td>
+	</tr>
+		<tr>
+			<td>tmp</td><td port="f0">19</td>
+		</tr>
+		
+		<tr>
+			<td>var</td><td port="f1">20</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	Bloque25:f0 -> Inodo19
+Bloque25:f1 -> Inodo20
+
+	Inodo19 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>tmp</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 19</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">26</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo19:f0 -> Bloque26
+
+	Bloque26 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 26</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">19</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	Inodo20 [label=< 
+            <table border="1" cellspacing="0" >
+				<tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>var</b></font></td>
+                </tr>
+                <tr>
+                    <td colspan="2" bgcolor="#0000CC"><font color="white"><b>Inodo 20</b></font></td>
+                </tr>
+                <tr>
+                    <td>I_uid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_gid</td><td>1</td>
+                </tr>
+                <tr>
+                    <td>I_s</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_atime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_ctime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				<tr>
+                    <td>I_mtime</td><td>2024-03-18 21:51:24</td>
+                </tr>
+				
+		<tr>
+			<td>I_block_0</td><td port="f0">27</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_1</td><td port="f1">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_2</td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_3</td><td port="f3">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_4</td><td port="f4">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_5</td><td port="f5">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_6</td><td port="f6">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_7</td><td port="f7">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_8</td><td port="f8">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_9</td><td port="f9">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_10</td><td port="f10">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_11</td><td port="f11">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_12</td><td port="f12">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_13</td><td port="f13">-1</td>
+		</tr>
+		
+		<tr>
+			<td>I_block_14</td><td port="f14">-1</td>
+		</tr>
+		
+				<tr>
+                    <td>I_type</td><td>0</td>
+                </tr>
+				<tr>
+                    <td>I_perm</td><td>664</td>
+                </tr>
+                </table> 
+            > shape=box style=invisible ]
+	Inodo20:f0 -> Bloque27
+
+	Bloque27 [label=<<table border="1" cellspacing="0">
+	<tr>
+		<td colspan="2" bgcolor="#FF0000"><font color="white"><b>Bloque 27</b></font></td>
+	</tr>
+		<tr>
+			<td>.</td><td port="f0">20</td>
+		</tr>
+		
+		<tr>
+			<td>..</td><td port="f1">0</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f2">-1</td>
+		</tr>
+		
+		<tr>
+			<td></td><td port="f3">-1</td>
+		</tr>
+		
+	</table>> shape=box style=invisible ]
+	
+	}

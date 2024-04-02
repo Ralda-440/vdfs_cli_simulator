@@ -1,0 +1,22 @@
+
+	digraph G {
+		disk [label=< 
+				<table border="1" cellspacing="0">
+				<tr>
+					<td colspan="5" bgcolor="#000000"><font color="white"><b>C.dsk</b></font></td>
+				</tr>
+				<tr>
+					<td>MBR</td>
+				
+		<td>Primaria<br></br>60.00 % del Disco</td>
+		
+			<td>Libre<br></br>20.00 % del Disco</td>
+			
+		<td>Primaria<br></br>10.00 % del Disco</td>
+		
+		<td>Libre<br></br>10.00 % del Disco</td>
+		
+				</tr>
+				</table>
+			> shape=box style=invisible ]
+				}
