@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"os"
 	"strings"
 )
@@ -75,7 +74,9 @@ func (ed *Edit) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando EDIT--------------")
-	fmt.Println("Se edito el archivo con exito: "+path, "en la particion con id: "+idPart)
+	//fmt.Println("----------Comando EDIT--------------")
+	//fmt.Println("Se edito el archivo con exito: "+path, "en la particion con id: "+idPart)
+	ctx.AgregarOutput("-------------Comando Edit--------------")
+	ctx.AgregarOutput("El archivo: \"" + path + "\" se edito correctamente")
 	return nil
 }

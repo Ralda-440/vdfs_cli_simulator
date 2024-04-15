@@ -1,7 +1,5 @@
 package comandos
 
-import "fmt"
-
 type Login struct {
 	Parametros map[string]string
 	Linea      int
@@ -83,8 +81,10 @@ func (lg *Login) Ejecutar(ctx *Contexto) interface{} {
 				//Iniciar sesion
 				SesionActiva.IniciarSesion(ctx, user, pass, id, usuario.UID, GUI)
 				//Mensaje de exito
-				fmt.Println("----------Comando LOGIN--------------")
-				fmt.Println("Sesion iniciada con exito")
+				//fmt.Println("----------Comando LOGIN--------------")
+				//fmt.Println("Sesion iniciada con exito")
+				ctx.AgregarOutput("--------------------Comando LOGIN--------------------")
+				ctx.AgregarOutput("Usuario: \"" + user + "\" con Id: \"" + usuario.UID + "\" y Grupo: \"" + usuario.Grupo + "\" inicio Sesion con exito en la particion con Id: \"" + id + "\"")
 				return nil
 			}
 			ctx.AgregarError("Error: La contraseña es incorrecta", lg.Linea, lg.Columna)
@@ -129,11 +129,14 @@ func (sesion *Sesion) HaySesionActiva() bool {
 }
 
 // CerrarSesion cierra la sesion activa
-func (sesion *Sesion) CerrarSesion() {
+func (sesion *Sesion) CerrarSesion() (string, string) {
+	usr := sesion.Usuario
+	id := sesion.IdParticion
 	sesion.Usuario = ""
 	sesion.Password = ""
 	sesion.IdParticion = ""
 	sesion.Activa = false
+	return usr, id
 }
 
 // Sesion Actual

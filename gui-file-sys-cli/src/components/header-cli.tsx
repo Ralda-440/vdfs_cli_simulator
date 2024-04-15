@@ -2,22 +2,53 @@
 
 import React from 'react';
 
-import { Button, ChakraProvider } from '@chakra-ui/react';
-import { Icon } from '@iconify/react';
+import { IconButton } from '@chakra-ui/react';
+import { HiOutlineRefresh } from 'react-icons/hi';
 
 const HeaderCli = () => {
   return (
     <div>
-      <div className="flex h-[47px] items-center justify-between px-4">
+      <div className="flex h-[47px] items-center justify-between">
         <div className="hidden md:block">
-          <ChakraProvider>
-            <Button
-              colorScheme='blackAlpha'
-              variant={'outline'}
-            >
-              <Icon icon="codicon:debug-restart" width="24" height="24"  style={{color:'black'}} />
-            </Button>
-          </ChakraProvider>
+          <IconButton
+            aria-label="Return"
+            icon={
+              <HiOutlineRefresh
+                style={{
+                  color: 'black',
+                }}
+              />
+            }
+            variant={'outline'}
+            colorScheme="blackAlpha"
+            size={'lg'}
+            onClick={() => {
+              //Limpiar el LocalStorage outputValue, path
+              localStorage.setItem('path', '/');
+              localStorage.setItem('outputValue', '');
+              //Fetch para reiniciar CLI
+              fetch('http://localhost:4005/resetCLI', {
+                method: 'GET',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+              })
+                .then((res) => {
+                  return res.json();
+                })
+                .then((data) => {
+                  //Si hay errores, mostrarlos en una alerta
+                  if (data.errs.length) {
+                    alert(
+                      data.errs.map((element: string) => {
+                        return element + '\n';
+                      }),
+                    );
+                  }
+                });
+              window.location.reload();
+            }}
+          />
         </div>
       </div>
     </div>

@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -19,7 +18,7 @@ func (mkdir *Mkdir) Ejecutar(ctx *Contexto) interface{} {
 	}
 	//Verificar si hay parametros
 	if len(mkdir.Parametros) == 0 {
-		ctx.AgregarError("El comando mkdir no tiene parametros", mkdir.Linea, mkdir.Columna)
+		ctx.AgregarError("Error : El comando mkdir no tiene parametros", mkdir.Linea, mkdir.Columna)
 		return nil
 	}
 	//Verifica parametro obligatorio -path
@@ -79,6 +78,10 @@ func (mkdir *Mkdir) Ejecutar(ctx *Contexto) interface{} {
 		comandoConsola := "mkdir "
 		//Agregar los Parametros
 		for k, v := range mkdir.Parametros {
+			if v == "" {
+				comandoConsola += k + " "
+				continue
+			}
 			comandoConsola += k + "=" + v + " "
 		}
 		superBloque.RegistrarJournaling(ctx, partMontada.DiskName, partMontada.Start_SuperBloque, "mkdir", path, "", comandoConsola)
@@ -89,7 +92,9 @@ func (mkdir *Mkdir) Ejecutar(ctx *Contexto) interface{} {
 		}
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando MKDIR--------------")
-	fmt.Println("Se creo la carpeta con exito: " + path + " en la particion con id: " + idPart)
+	//fmt.Println("----------Comando MKDIR--------------")
+	//fmt.Println("Se creo la carpeta con exito: " + path + " en la particion con id: " + idPart)
+	ctx.AgregarOutput("-------------Comando MKDIR--------------")
+	ctx.AgregarOutput("La carpeta: \"" + path + "\" se creo correctamente")
 	return nil
 }

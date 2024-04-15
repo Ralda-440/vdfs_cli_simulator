@@ -3,7 +3,6 @@ package comandos
 import (
 	structs "app/Interprete/Structs"
 	"encoding/binary"
-	"fmt"
 	"io"
 	"os"
 	"sort"
@@ -29,6 +28,7 @@ func (mkd *Mkdisk) Ejecutar(ctx *Contexto) interface{} {
 	}
 	//Verificar si existe el parametro -size
 	value, existe := mkd.Parametros["-size"]
+	sizeOrigen := value
 	if !existe {
 		ctx.AgregarError("Error: Falta el parametro -size", mkd.Linea, mkd.Columna)
 		return nil
@@ -123,8 +123,8 @@ func (mkd *Mkdisk) Ejecutar(ctx *Contexto) interface{} {
 		ctx.AgregarError("Error al escribir el MBR: "+err.Error(), mkd.Linea, mkd.Columna)
 		return nil
 	}
-	fmt.Println("----------Comando MKDISK----------")
-	fmt.Println("Disco \"" + nameDisk + "\" creado con exito")
+	ctx.AgregarOutput("----------Comando MKDISK----------")
+	ctx.AgregarOutput("Disco \"" + nameDisk + "\" creado con exito. Con Size: " + sizeOrigen + " " + unit)
 	return nil
 }
 

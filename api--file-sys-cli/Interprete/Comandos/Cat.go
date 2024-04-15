@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"regexp"
 	"strings"
 )
@@ -73,9 +72,15 @@ func (cat *Cat) Ejecutar(ctx *Contexto) interface{} {
 	//Convertir contenido a string
 	contStr := string(contenido)
 	//Imprimir contenido
-	fmt.Println("----------Comando CAT--------------")
-	fmt.Println(contStr)
-	fmt.Println("----------------------------------")
-	fmt.Println("Comando CAT ejecutado correctamente")
+	//fmt.Println("----------Comando CAT--------------")
+	//fmt.Println(contStr)
+	//fmt.Println("----------------------------------")
+	//fmt.Println("Comando CAT ejecutado correctamente")
+	ctx.AgregarOutput("--------------------Comando CAT--------------------")
+	for _, path := range paths {
+		ctx.AgregarOutput("Archivo: " + path)
+	}
+	ctx.AgregarOutput("--------------------------------------------------")
+	ctx.AgregarOutput(contStr)
 	return nil
 }

@@ -1,7 +1,5 @@
 package comandos
 
-import "fmt"
-
 type Loss struct {
 	Parametros map[string]string
 	Linea      int
@@ -67,7 +65,9 @@ func (loss *Loss) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando LOSS--------------")
-	fmt.Println("Bitmpas, Inodos y Bloques limpiados con exito de la particion: " + partMontada.PartName)
+	//fmt.Println("----------Comando LOSS--------------")
+	//fmt.Println("Bitmpas, Inodos y Bloques limpiados con exito de la particion: " + partMontada.PartName)
+	ctx.AgregarOutput("----------Comando LOSS--------------")
+	ctx.AgregarOutput("La particion con id \"" + id + "\" se ha formateado correctamente")
 	return nil
 }

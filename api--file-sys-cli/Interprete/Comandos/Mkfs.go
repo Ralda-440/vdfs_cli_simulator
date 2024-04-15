@@ -3,7 +3,6 @@ package comandos
 import (
 	structs "app/Interprete/Structs"
 	"encoding/binary"
-	"fmt"
 	"io"
 	"os"
 	"time"
@@ -60,7 +59,7 @@ func (mks *Mkfs) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Obtener MBR del disco donde esta la particion
-	mbr, err := getMBRDisk(partMontada.DiskName)
+	mbr, err := GetMBRDisk(partMontada.DiskName)
 	if err != nil {
 		ctx.AgregarError("Error : El disco no existe o hubo error al leer su MBR :"+err.Error(), mks.Linea, mks.Columna)
 		return nil
@@ -132,8 +131,10 @@ func (mks *Mkfs) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando MKFS--------------")
-	fmt.Println("Sistema de Archivos Formateado con exito")
+	//fmt.Println("----------Comando MKFS--------------")
+	//fmt.Println("Sistema de Archivos Formateado con exito")
+	ctx.AgregarOutput("----------Comando MKFS--------------")
+	ctx.AgregarOutput("Particion: \"" + partMontada.PartName + "\" con ID: \"" + id + "\" Formateada con exito con el Sistema de Archivos: " + fs)
 	return nil
 }
 

@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -112,7 +111,9 @@ func (chgrp *Chgrp) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando CHGRP--------------")
-	fmt.Println("Grupo del usuario: " + usuario + " cambiado a: " + grupo)
+	//fmt.Println("----------Comando CHGRP--------------")
+	//fmt.Println("El Grupo del usuario: " + usuario + " se cambio a: " + grupo)
+	ctx.AgregarOutput("-------------Comando Chgrp--------------")
+	ctx.AgregarOutput("El Grupo del usuario: \"" + usuario + "\" se cambio a: \"" + grupo + "\"" + " correctamente")
 	return nil
 }

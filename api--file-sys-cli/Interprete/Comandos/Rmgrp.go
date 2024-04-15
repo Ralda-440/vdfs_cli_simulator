@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -103,7 +102,9 @@ func (rmgrp *Rmgrp) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de Exito
-	fmt.Println("----------Comando RMGRP--------------")
-	fmt.Println("Grupo eliminado con exito")
+	//fmt.Println("----------Comando RMGRP--------------")
+	//fmt.Println("Grupo eliminado con exito")
+	ctx.AgregarOutput("--------------------Comando RMGRP--------------------")
+	ctx.AgregarOutput("Grupo: \"" + name + "\" en la particion con id: \"" + idPart + "\" eliminado con exito")
 	return nil
 }

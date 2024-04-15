@@ -2,7 +2,6 @@ package comandos
 
 import (
 	structs "app/Interprete/Structs"
-	"fmt"
 )
 
 type Unmount struct {
@@ -38,7 +37,7 @@ func (umt *Unmount) Ejecutar(ctx *Contexto) interface{} {
 	}
 	//Actualizar atributo Part_status
 	//Obtener mbr del Disco
-	mbr, err := getMBRDisk(partMount.DiskName)
+	mbr, err := GetMBRDisk(partMount.DiskName)
 	if err != nil {
 		ctx.AgregarError("Error : El disco de la particion montada ya no Existe"+err.Error(), umt.Linea, umt.Columna)
 		return nil
@@ -79,7 +78,9 @@ func (umt *Unmount) Ejecutar(ctx *Contexto) interface{} {
 		}
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando UNMOUNT----------")
-	fmt.Println("Particion Desmontada con exito")
+	//fmt.Println("----------Comando UNMOUNT----------")
+	//fmt.Println("Particion Desmontada con exito")
+	ctx.AgregarOutput("--------------------Comando UNMOUNT--------------------")
+	ctx.AgregarOutput("Particion: \"" + partMount.PartName + "\" con Id: \"" + id + "\" Ubicada en el Disco: \"" + partMount.DiskName + "\" Desmontada con exito")
 	return nil
 }

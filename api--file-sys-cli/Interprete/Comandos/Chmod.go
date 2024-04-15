@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -98,7 +97,9 @@ func (chm *Chmod) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando CHOWN--------------")
-	fmt.Println("Se cambiaron los permisos del archivo o carpeta en: " + path)
+	//fmt.Println("----------Comando CHOWN--------------")
+	//fmt.Println("Se cambiaron los permisos del archivo o carpeta en: " + path)
+	ctx.AgregarOutput("-------------Comando CHOWN--------------")
+	ctx.AgregarOutput("Los Permisos del archivo/carpeta : \"" + path + "\" se cambiaron a: \"" + ugo + "\" correctamente")
 	return nil
 }

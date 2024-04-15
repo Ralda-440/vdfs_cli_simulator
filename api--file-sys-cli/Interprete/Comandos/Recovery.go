@@ -3,7 +3,6 @@ package comandos
 import (
 	"app/Parser"
 	"bytes"
-	"fmt"
 
 	"github.com/antlr4-go/antlr/v4"
 )
@@ -74,7 +73,9 @@ func (recovery *Recovery) Ejecutar(ctx *Contexto) interface{} {
 	if ctx.HayErrores() {
 		return nil
 	}
-	fmt.Println("---------Comando RECOVERY----------")
-	fmt.Println("Comandos recuperados y ejecutados correctamente")
+	//fmt.Println("---------Comando RECOVERY----------")
+	//fmt.Println("Comandos recuperados y ejecutados correctamente")
+	ctx.AgregarOutput("------------Comando RECOVERY----------")
+	ctx.AgregarOutput("La particion con id \"" + id + "\" se ha recuperado correctamente")
 	return nil
 }

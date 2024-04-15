@@ -153,7 +153,6 @@ func (sb *Super_Bloque) ReporteLs(ctx *Contexto, driveLetter string, path []stri
 		inodo = sb.RecuperarInodo(ctx, driveLetter, 0)
 	} else {
 		inodo, _, _, _ = sb.RecuperarInodoPorPath(ctx, driveLetter, path, 0, 1, false, true, false)
-
 	}
 	if inodo == nil || ctx.HayErrores() {
 		ctx.AgregarError("Error: No existe el path para listar el archivo", 0, 0)

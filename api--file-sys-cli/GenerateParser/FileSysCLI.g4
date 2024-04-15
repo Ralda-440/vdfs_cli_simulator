@@ -1,6 +1,10 @@
 grammar FileSysCLI;
 //import FileSysCLILex;
 
+options {
+    caseInsensitive = true;
+}
+
 commands: command* EOF;
 
 command 

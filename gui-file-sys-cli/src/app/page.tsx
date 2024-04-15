@@ -1,13 +1,67 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { Box, Text,Textarea,ChakraProvider} from '@chakra-ui/react';
+import { useEffect, useRef, useState } from 'react';
+
+import HeaderCli from '@/components/header-cli';
+import { Box, Text, Textarea } from '@chakra-ui/react';
 
 const Terminal: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const [outputValue, setOutputValue] = useState<string>('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
+  const [comandos, setComandos] = useState<string[]>([]);
+
+  //UseEffect cuando cambiar el valor de comandos
+  useEffect(() => {
+    // Si no hay comandos, no hacer nada
+    if (!comandos.length) {
+      return;
+    }
+    // Obtener el primer comando de la lista de comandos y eliminarlo
+    const comando = comandos.shift();
+    // Fetch para enviar el comando al servidor
+    fetch('http://localhost:4005/inputCLI', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        input: comando, 
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // Agregar los errores al output
+        //console.log(data);
+        setOutputValue((prevOutputValue) => {
+          const newOutputValue = `${prevOutputValue}${
+            data.errs.map((element : Error_)  => {
+              return element.msg;
+            }).join('\n')
+          }`+`${data.output != "" ? '\n'+data.output : ''}`+'\n';
+          //Guardar outputValue en el LocalStorage
+          localStorage.setItem('outputValue', newOutputValue);
+          //Si hay errores, no agregar los comandos restantes
+          if (data.errs.length > 0) {
+            setComandos([]);
+            return newOutputValue;
+          }
+          // Agregar los comandos restantes al estado
+          setComandos([...comandos]);
+          return newOutputValue;
+        });
+      })
+      .catch((error) => {
+        setOutputValue((prevOutputValue) => {
+          // Agregar el valor de error al output
+          const newOutputValue = `${prevOutputValue}>${error}\n`;
+          //Guardar outputValue en el LocalStorage
+          localStorage.setItem('outputValue', newOutputValue);
+          return newOutputValue;
+        });
+      });
+  }, [comandos]);
 
   useEffect(() => {
     // Cargar outputValue del LocalStorage
@@ -21,23 +75,46 @@ const Terminal: React.FC = () => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = () => {
-    const newOutputValue = `${outputValue}>${inputValue}\n`;
-    setOutputValue(newOutputValue);
-    //Guardar outputValue en el LocalStorage
-    localStorage.setItem('outputValue', newOutputValue);
-    setInputValue('');
+  const addOuputValue = () => {
+    setOutputValue((prevOutputValue) => {
+      const newOutputValue = `${prevOutputValue}>${inputValue}\n`;
+      //Guardar outputValue en el LocalStorage
+      localStorage.setItem('outputValue', newOutputValue);
+      return newOutputValue;
+    });
   };
 
+  const handleOnInput = (event: React.FormEvent<HTMLTextAreaElement>) => {
+    event.currentTarget.style.height = 'auto';
+    event.currentTarget.style.height = event.currentTarget.scrollHeight + 'px';
+  };
+
+  type Error_ = {
+    msg: string;
+    linea: number;
+    columna: number;
+  }
+
   const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (event.key === "Enter" && !event.shiftKey) {
+    if (event.key === 'Enter' && !event.shiftKey) {
       // Realizar la función para Enter sin Shift
       event.preventDefault(); // Evita el comportamiento predeterminado del Enter
-      // Enviar el comando
-      handleSubmit();
+      // Agregar el valor de input a output
+      addOuputValue();
+      // Copia de input
+      const inputValueCopy = inputValue;
+      // Limpiar el valor de input
+      setInputValue('');
       event.currentTarget.value = '';
-      event.currentTarget.style.height = 'auto';
-      event.currentTarget.style.height = event.currentTarget.scrollHeight + 'px';
+      handleOnInput(event);
+      // Si el input está vacío, no enviar nada
+      if (!inputValueCopy.trim()) {
+        return;
+      }
+      //Realizar el split de los comandos con salto de linea
+      const comandos_ = inputValueCopy.split('\n');
+      //Agregar los comandos al estado
+      setComandos(comandos_);
     }
   };
 
@@ -49,49 +126,43 @@ const Terminal: React.FC = () => {
   }, [outputValue]); // Scroll to bottom on outputValue change
 
   return (
-    <Box
-      bg="black"
-      color="white"
-      height="45em"
-      width={'100%'}
-      borderRadius="md"
-      p={4}
-      overflowY="auto"
-      ref={outputRef}
-      whiteSpace="pre-wrap"
-    >
-      <Text
-        maxWidth={'90em'}
+    <>
+      <HeaderCli />
+      <Box
+        bg="black"
+        color="white"
+        height="45em"
+        width={'100%'}
+        borderRadius="md"
+        p={4}
+        overflowY="auto"
+        ref={outputRef}
+        whiteSpace="pre-wrap"
       >
-        {outputValue}
-      </Text>
-      <Box display="flex" mt={2}>
-        <Text color="green"
-        >{'>$'}</Text>
-        <ChakraProvider>
-        <Textarea 
-          ref={textAreaRef}
-          placeholder='Ingrese Comando(s)'
-          bg={'transparent'}
-          style={{
-            caretColor: 'white',
-          }}
-          onKeyDown={handleKeyDown}
-          onChange={handleInputChange}
-          width={'100%'}
-          value={inputValue}
-          padding={0}
-          paddingLeft={2}
-          variant='unstyled'
-          resize='none'
-          onInput={(e) => {
-            e.currentTarget.style.height = 'auto';
-            e.currentTarget.style.height = e.currentTarget.scrollHeight + 'px';
-          }}
+        <Text maxWidth={'90em'}>{outputValue}</Text>
+        <Box display="flex" mt={2}>
+          <Text color="green">{'>$'}</Text>
+          <Textarea
+            ref={textAreaRef}
+            value={inputValue}
+            placeholder="Ingrese Comando(s)"
+            bg={'transparent'}
+            style={{
+              caretColor: 'white',
+            }}
+            onKeyDown={handleKeyDown}
+            onChange={handleInputChange}
+            width={'100%'}
+            height={'auto'}
+            padding={0}
+            paddingLeft={2}
+            variant="unstyled"
+            resize="none"
+            onInput={handleOnInput}
           ></Textarea>
-        </ChakraProvider>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

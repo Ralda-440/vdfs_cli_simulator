@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -97,7 +96,9 @@ func (rmusr *Rmusr) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando RMUSR--------------")
-	fmt.Println("Usuario \"" + user + "\" eliminado con exito")
+	//fmt.Println("----------Comando RMUSR--------------")
+	//fmt.Println("Usuario \"" + user + "\" eliminado con exito")
+	ctx.AgregarOutput("--------------------Comando RMUSR--------------------")
+	ctx.AgregarOutput("Usuario \"" + user + "\" eliminado con exito en la particion con Id: \"" + idPart + "\"")
 	return nil
 }

@@ -1,8 +1,6 @@
 package comandos
 
 import (
-	"bufio"
-	"fmt"
 	"os"
 )
 
@@ -50,25 +48,31 @@ func (rmd *Rmdisk) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Pedir confiramcion para eliminar el disco
-	reader := bufio.NewReader(os.Stdin)
-	for {
-		println("Desea eliminar el disco " + name + " (S/N)")
-		confirmacion, _ := reader.ReadString('\n')
-		confirmacion = confirmacion[:len(confirmacion)-1]
-		if confirmacion == "S" || confirmacion == "s" {
-			break
-		} else if confirmacion == "N" || confirmacion == "n" {
-			return nil
+	/*
+		reader := bufio.NewReader(os.Stdin)
+		for {
+			println("Desea eliminar el disco " + name + " (S/N)")
+			confirmacion, _ := reader.ReadString('\n')
+			confirmacion = confirmacion[:len(confirmacion)-1]
+			if confirmacion == "S" || confirmacion == "s" {
+				break
+			} else if confirmacion == "N" || confirmacion == "n" {
+				return nil
+			}
+			println("Error: Opcion no valida")
 		}
-		println("Error: Opcion no valida")
-	}
+	*/
 	//Eliminar el disco
 	err = os.Remove("./MIA/P1/" + name)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo eliminar el disco", rmd.Linea, rmd.Columna)
 		return nil
 	}
-	fmt.Println("----------Comando MKDISK----------")
-	fmt.Println("Disco " + name + " eliminado correctamente")
+	/*
+		fmt.Println("----------Comando MKDISK----------")
+		fmt.Println("Disco " + name + " eliminado correctamente")
+	*/
+	ctx.AgregarOutput("----------Comando RMDISK----------")
+	ctx.AgregarOutput("Disco \"" + name + "\" eliminado correctamente")
 	return nil
 }

@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -67,7 +66,9 @@ func (rm *Remove) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de Exito
-	fmt.Println("----------Comando Remove--------------")
-	fmt.Println("El archivo o carpeta se elimino correctamente")
+	//fmt.Println("----------Comando Remove--------------")
+	//fmt.Println("El archivo o carpeta se elimino correctamente")
+	ctx.AgregarOutput("-------------Comando Remove--------------")
+	ctx.AgregarOutput("El archivo/carpeta: \"" + path + "\" se elimino correctamente")
 	return nil
 }

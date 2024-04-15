@@ -64,6 +64,31 @@ func (mbr *MBR) BuscarParticionExtendida() *Particion {
 
 }
 
+// Obtener todas las particiones Primerias y Logicas
+func (mbr *MBR) GetParticiones(driveletter string) (map[string]string, error) {
+	particiones := make(map[string]string)
+	for _, particion := range mbr.Particiones {
+		if particion.Part_correlative == -1 {
+			continue
+		}
+		if particion.Part_type == 'E' {
+			ebrs, err := particion.ReadEBRsInDisk(driveletter)
+			if err != nil {
+				return nil, err
+			}
+			for _, ebr := range ebrs {
+				if ebr.Part_s == -1 {
+					continue
+				}
+				particiones[string(bytes.Replace(ebr.Part_name[:], []byte{0}, []byte{}, -1))] = "partition"
+			}
+		} else {
+			particiones[string(bytes.Replace(particion.Part_name[:], []byte{0}, []byte{}, -1))] = "partition"
+		}
+	}
+	return particiones, nil
+}
+
 // Buscar particion por nombre. Retorna si existe, Particion P o E (Si lo es), Particion Logica que coincide con el nombre (Si lo es),
 // Particion Logica Anterior a la Particion Logica que coincide con el nombre, la cantidad de particiones primarias y la cantidad de particiones extendidas y error
 func (mbr *MBR) BuscarParticion(driveletter string, name string) (bool, *Particion, int, *EBR, *EBR, int, int, error) {

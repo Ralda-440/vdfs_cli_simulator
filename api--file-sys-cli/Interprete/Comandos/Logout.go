@@ -1,7 +1,5 @@
 package comandos
 
-import "fmt"
-
 type Logout struct {
 	Parametros map[string]string
 	Linea      int
@@ -26,10 +24,11 @@ func (lgt *Logout) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Cerrar sesion
-	SesionActiva.CerrarSesion()
+	usr, idPart := SesionActiva.CerrarSesion()
 	//Mensaje de exito
-	//Mensaje de exito
-	fmt.Println("----------Comando LOGOUT--------------")
-	fmt.Println("Sesion cerrada con exito")
+	//fmt.Println("----------Comando LOGOUT--------------")
+	//fmt.Println("Sesion cerrada con exito")
+	ctx.AgregarOutput("--------------------Comando LOGOUT--------------------")
+	ctx.AgregarOutput("Usuario: \"" + usr + "\" ha cerrado sesion en la particion con id: " + idPart)
 	return nil
 }

@@ -2,7 +2,6 @@ package comandos
 
 import (
 	structs "app/Interprete/Structs"
-	"fmt"
 	"strconv"
 )
 
@@ -75,7 +74,7 @@ func (f *Fdisk) CrearParticion(ctx *Contexto) {
 		fit = value
 	}
 	//Obtener mbr del disco donde se creara la particion
-	mbr, err := getMBRDisk(drivelleter)
+	mbr, err := GetMBRDisk(drivelleter)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo leer el MBR del disco : "+err.Error(), f.Linea, f.Columna)
 		return
@@ -136,10 +135,10 @@ func (f *Fdisk) CrearParticion(ctx *Contexto) {
 	//Verificar que tipo de particion se creara
 	if type_ == "L" {
 		//##Crear Particion Logica
-		f.CrearParticionLogica(ctx, mbr, drivelleter, name, sizeInt, unit, fit)
+		f.CrearParticionLogica(ctx, mbr, drivelleter, name, sizeInt, unit, fit, size)
 	} else if type_ == "P" || type_ == "E" {
 		//##Crear Particion Primaria o Extendida
-		f.CrearParticionPrimariaOExtendida(ctx, mbr, drivelleter, name, sizeInt, unit, fit, type_)
+		f.CrearParticionPrimariaOExtendida(ctx, mbr, drivelleter, name, sizeInt, unit, fit, type_, size)
 	} else {
 		ctx.AgregarError("Error: El valor del parametro -type no es valido", f.Linea, f.Columna)
 		return
@@ -147,7 +146,7 @@ func (f *Fdisk) CrearParticion(ctx *Contexto) {
 }
 
 // ##Crear Particion Primaria o Extendida
-func (f *Fdisk) CrearParticionPrimariaOExtendida(ctx *Contexto, mbr *structs.MBR, drivelleter string, name string, size int64, unit string, fit string, type_ string) {
+func (f *Fdisk) CrearParticionPrimariaOExtendida(ctx *Contexto, mbr *structs.MBR, drivelleter string, name string, size int64, unit string, fit string, type_ string, sizeStr string) {
 	//Buscar espacio para la particion
 	existe, start_absolute := mbr.BuscarEspacio(size)
 	if !existe {
@@ -191,12 +190,14 @@ func (f *Fdisk) CrearParticionPrimariaOExtendida(ctx *Contexto, mbr *structs.MBR
 		}
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando FDISK----------")
-	fmt.Println("Particion " + name + " creada en el disco " + drivelleter + " con exito")
+	//fmt.Println("----------Comando FDISK----------")
+	//fmt.Println("Particion \"" + name + "\" creada en el disco \"" + drivelleter + "\" con exito. Tamaño: " + sizeStr + " " + unit)
+	ctx.AgregarOutput("----------Comando FDISK----------")
+	ctx.AgregarOutput("Particion " + type_ + " \"" + name + "\" creada en el disco \"" + drivelleter + "\" con exito. Tamaño: " + sizeStr + " " + unit)
 }
 
 // ##Crear Particion Logica
-func (f *Fdisk) CrearParticionLogica(ctx *Contexto, mbr *structs.MBR, drivelleter string, name string, size int64, unit string, fit string) {
+func (f *Fdisk) CrearParticionLogica(ctx *Contexto, mbr *structs.MBR, drivelleter string, name string, size int64, unit string, fit string, sizeStr string) {
 	//Buscar particion extendida
 	extendida := mbr.BuscarParticionExtendida()
 	if extendida == nil {
@@ -232,8 +233,10 @@ func (f *Fdisk) CrearParticionLogica(ctx *Contexto, mbr *structs.MBR, drivellete
 		return
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando FDISK----------")
-	fmt.Println("Particion " + name + " creada en la particion extendida con exito")
+	//fmt.Println("----------Comando FDISK----------")
+	//fmt.Println("Particion Extendida \"" + name + "\" creada en el disco \"" + drivelleter + "\" con exito. Tamaño: " + sizeStr + " " + unit)
+	ctx.AgregarOutput("----------Comando FDISK----------")
+	ctx.AgregarOutput("Particion Logica \"" + name + "\" creada en la particion extendida con exito. Tamaño: " + sizeStr + " " + unit)
 }
 
 // ##Eliminar Particion
@@ -248,7 +251,7 @@ func (f *Fdisk) EliminarParticion(ctx *Contexto) {
 	drivelleter := f.Parametros["-driveletter"]
 	name := f.Parametros["-name"]
 	//Obtener mbr del disco donde se eliminara la particion
-	mbr, err := getMBRDisk(drivelleter)
+	mbr, err := GetMBRDisk(drivelleter)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo leer el MBR del disco : "+err.Error(), f.Linea, f.Columna)
 		return
@@ -276,8 +279,10 @@ func (f *Fdisk) EliminarParticion(ctx *Contexto) {
 			return
 		}
 		//Mensaje de exito
-		fmt.Println("----------Comando FDISK----------")
-		fmt.Println("Particion " + name + " eliminada del disco " + drivelleter + " con exito")
+		//fmt.Println("----------Comando FDISK----------")
+		//fmt.Println("Particion \"" + name + "\" eliminada del disco \"" + drivelleter + "\" con exito")
+		ctx.AgregarOutput("----------Comando FDISK----------")
+		ctx.AgregarOutput("Particion \"" + name + "\" eliminada del disco \"" + drivelleter + "\" con exito")
 		return
 	}
 	//Si es logica
@@ -298,8 +303,10 @@ func (f *Fdisk) EliminarParticion(ctx *Contexto) {
 		return
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando FDISK----------")
-	fmt.Println("Particion Logica\"" + name + "\" eliminada de la particion extendida con exito")
+	//fmt.Println("----------Comando FDISK----------")
+	//fmt.Println("Particion Logica \"" + name + "\" eliminada de la particion extendida con exito")
+	ctx.AgregarOutput("----------Comando FDISK----------")
+	ctx.AgregarOutput("Particion Logica \"" + name + "\" eliminada de la particion extendida con exito")
 }
 
 // ##Modificar Particion
@@ -319,7 +326,7 @@ func (f *Fdisk) ModificarParticion(ctx *Contexto) {
 		unit = value
 	}
 	//Obtener mbr del disco donde se modificara la particion
-	mbr, err := getMBRDisk(drivelleter)
+	mbr, err := GetMBRDisk(drivelleter)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo leer el MBR del disco : "+err.Error(), f.Linea, f.Columna)
 		return
@@ -408,6 +415,8 @@ func (f *Fdisk) ModificarParticion(ctx *Contexto) {
 		}
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando FDISK----------")
-	fmt.Println("Particion \"" + name + "\" modificada en el disco " + drivelleter + " con exito")
+	//fmt.Println("----------Comando FDISK----------")
+	//fmt.Println("Particion \"" + name + "\" modificada en el disco " + drivelleter + " con exito")
+	ctx.AgregarOutput("----------Comando FDISK----------")
+	ctx.AgregarOutput("Particion \"" + name + "\" modificada en el disco " + drivelleter + " con exito")
 }

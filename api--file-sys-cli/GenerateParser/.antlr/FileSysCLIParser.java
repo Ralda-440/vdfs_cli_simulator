@@ -1,4 +1,4 @@
-// Generated from /home/ralda/Estudios/lab_archivos/proyecto_1/MIA_P1_202103216/GenerateParser/FileSysCLI.g4 by ANTLR 4.13.1
+// Generated from /home/ralda/Estudios/lab_archivos/proyecto_2/MIA_P2_202103216/api--file-sys-cli/GenerateParser/FileSysCLI.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;

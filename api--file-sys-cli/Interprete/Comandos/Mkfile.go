@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"os"
 	"strconv"
 	"strings"
@@ -119,7 +118,9 @@ func (mkf *Mkfile) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Imprimir mensaje de exito
-	fmt.Println("----------Comando MKFILE--------------")
-	fmt.Println("Archivo creado con exito")
+	//fmt.Println("----------Comando MKFILE--------------")
+	//fmt.Println("Archivo creado con exito")
+	ctx.AgregarOutput("-------------Comando MKFILE--------------")
+	ctx.AgregarOutput("Archivo : \"" + path + "\" creado con exito")
 	return nil
 }

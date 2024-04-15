@@ -2,6 +2,7 @@ package comandos
 
 import (
 	"app/Parser"
+	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
 )
@@ -566,7 +567,9 @@ func (FSCLI *FileSysCLIVisitor_) VisitParameter(ctx *Parser.ParameterContext) in
 	if ctx.Value_parametro() != nil {
 		valorParametro = ctx.Value_parametro().Accept(FSCLI).(string)
 	}
-	param[ctx.QUOTED_TEXT_().GetText()] = valorParametro
+	//Poner en minusculas el parametro
+
+	param[strings.ToLower(ctx.QUOTED_TEXT_().GetText())] = valorParametro
 	return param
 }
 

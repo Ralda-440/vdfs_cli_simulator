@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -104,7 +103,9 @@ func (mkgrp *Mkgrp) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando MKGRP--------------")
-	fmt.Println("Grupo creado con exito: " + name)
+	//fmt.Println("----------Comando MKGRP--------------")
+	//fmt.Println("Grupo creado con exito: " + name)
+	ctx.AgregarOutput("--------------------Comando MKGRP--------------------")
+	ctx.AgregarOutput("Grupo: \"" + name + "\" con GID: " + strconv.Itoa(gid) + " creado con exito en la particion con Id: " + idPart)
 	return nil
 }

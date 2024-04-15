@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -68,7 +67,9 @@ func (rn *Rename) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando RENAME--------------")
-	fmt.Println("Se renombro el archivo o carpeta con exito: "+path, "en la particion con id: "+idPart)
+	//fmt.Println("----------Comando RENAME--------------")
+	//fmt.Println("El archivo/carpeta: \"" + path + "\" se ha renombrado a: \"" + name + "\" correctamente")
+	ctx.AgregarOutput("-------------Comando Rename--------------")
+	ctx.AgregarOutput("El archivo/carpeta: \"" + path + "\" se ha renombrado a: \"" + name + "\" correctamente")
 	return nil
 }

@@ -3,10 +3,8 @@ package comandos
 import (
 	structs "app/Interprete/Structs"
 	"encoding/binary"
-	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"strings"
 )
 
@@ -57,6 +55,8 @@ func (r *REP) Ejecutar(ctx *Contexto) interface{} {
 	} else if (name == "file" || name == "ls") && ok {
 		ruta = r.Parametros["-ruta"]
 	}
+	path_ := strings.Split(path, "/")
+	nameRep := path_[len(path_)-1]
 	//Swith para cada tipo de reporte
 	graphviz := ""
 	switch name {
@@ -73,8 +73,10 @@ func (r *REP) Ejecutar(ctx *Contexto) interface{} {
 			return nil
 		}
 		//Mensaje de exito
-		fmt.Println("----------Comando REP--------------")
-		fmt.Println("Reporte generado con exito")
+		//fmt.Println("----------Comando REP--------------")
+		//fmt.Println("Reporte generado con exito")
+		ctx.AgregarOutput("----------Comando REP: " + name + " --------------")
+		ctx.AgregarOutput("El Reporte: \"" + nameRep + "\" se genero con exito")
 		return nil
 	case "bm_block":
 		r.RepBM(ctx, id, false, path)
@@ -83,8 +85,10 @@ func (r *REP) Ejecutar(ctx *Contexto) interface{} {
 			return nil
 		}
 		//Mensaje de exito
-		fmt.Println("----------Comando REP--------------")
-		fmt.Println("Reporte generado con exito")
+		//fmt.Println("----------Comando REP--------------")
+		//fmt.Println("Reporte generado con exito")
+		ctx.AgregarOutput("----------Comando REP: " + name + " --------------")
+		ctx.AgregarOutput("El Reporte: \"" + nameRep + "\" se genero con exito")
 		return nil
 	case "inode":
 		graphviz = r.RepInode(ctx, id)
@@ -109,7 +113,13 @@ func (r *REP) Ejecutar(ctx *Contexto) interface{} {
 		}
 	case "file":
 		r.RepFile(ctx, id, ruta, path)
-		//Retornar porque ya se genero el archivo
+		//Verificar si hay errores
+		if ctx.HayErrores() {
+			ctx.AgregarError("Error: No se pudo generar el reporte de file", r.Linea, r.Columna)
+			return nil
+		}
+		ctx.AgregarOutput("----------Comando REP: " + name + " --------------")
+		ctx.AgregarOutput("El Reporte: \"" + nameRep + "\" de la ruta: \"" + ruta + "\" se genero con exito")
 		return nil
 	case "ls":
 		graphviz = r.RepLs(ctx, id, ruta)
@@ -121,6 +131,7 @@ func (r *REP) Ejecutar(ctx *Contexto) interface{} {
 	}
 	//Verificar si hay errores
 	if ctx.HayErrores() {
+		ctx.AgregarError("Error: No se pudo generar el reporte", r.Linea, r.Columna)
 		return nil
 	}
 	//Generar archivo .dot y .png
@@ -130,8 +141,14 @@ func (r *REP) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando REP: " + name + " --------------")
-	fmt.Println("Reporte generado con exito")
+	//fmt.Println("----------Comando REP: " + name + " --------------")
+	//fmt.Println("Reporte generado con exito")
+	ctx.AgregarOutput("----------Comando REP: " + name + " --------------")
+	if ruta == "" {
+		ctx.AgregarOutput("El Reporte: \"" + nameRep + "\" se genero con exito")
+		return nil
+	}
+	ctx.AgregarOutput("El Reporte: \"" + nameRep + "\" de la ruta: \"" + ruta + "\" se genero con exito")
 	return nil
 }
 
@@ -219,22 +236,22 @@ func (r *REP) RepLs(ctx *Contexto, id string, ruta string) string {
 }
 
 // Rep File
-func (r *REP) RepFile(ctx *Contexto, id string, ruta string, path string) string {
+func (r *REP) RepFile(ctx *Contexto, id string, ruta string, path string) {
 	//Buscar particion montada
 	existe, partMontada := ParticionesMontadas.BuscarParticionMontada(id)
 	if !existe {
 		ctx.AgregarError("Error: La particion con id \""+id+"\" no esta montada", r.Linea, r.Columna)
-		return ""
+		return
 	}
 	//Recuperar SuperBloque
 	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo recuperar el superBloque", r.Linea, r.Columna)
-		return ""
+		return
 	}
 	//Verificar si hay errores
 	if ctx.HayErrores() {
-		return ""
+		return
 	}
 	//Convertir ruta a []string
 	rutaArray := strings.Split(ruta, "/")
@@ -243,13 +260,15 @@ func (r *REP) RepFile(ctx *Contexto, id string, ruta string, path string) string
 	//Recuperar el archivo
 	contenido := superBloque.LeerContenidoArchivo(ctx, partMontada.DiskName, rutaArray)
 	if ctx.HayErrores() {
-		return ""
+		return
 	}
 	//Crear archivo con el contenido
-	file, err := os.Create(path)
+	path_ := strings.Split(path, "/")
+	nameRep := path_[len(path_)-1]
+	file, err := os.Create("./REP/" + nameRep + ".txt")
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo crear el archivo con el contenido: "+err.Error(), r.Linea, r.Columna)
-		return ""
+		return
 	}
 	defer file.Close()
 	//Convertir contenido a string
@@ -258,12 +277,11 @@ func (r *REP) RepFile(ctx *Contexto, id string, ruta string, path string) string
 	_, err = file.WriteString(contenidoStr)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo escribir el contenido en el archivo: "+err.Error(), r.Linea, r.Columna)
-		return ""
+		return
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando REP: file--------------")
-	fmt.Println("Archivo generado con exito")
-	return ""
+	//fmt.Println("----------Comando REP: file--------------")
+	//fmt.Println("Archivo generado con exito")
 }
 
 // Rep Block
@@ -350,7 +368,7 @@ func (r *REP) RepInode(ctx *Contexto, id string) string {
 // Rep MBR
 func (r *REP) RepMBR(name string, ctx *Contexto) string {
 	//Leer el MBR del disco
-	mbr, err := getMBRDisk(name)
+	mbr, err := GetMBRDisk(name)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo leer el MBR del disco : "+err.Error(), r.Linea, r.Columna)
 		return ""
@@ -367,7 +385,7 @@ func (r *REP) RepMBR(name string, ctx *Contexto) string {
 // Rep Disk
 func (r *REP) RepDisk(name string, ctx *Contexto) string {
 	//Leer el MBR del disco
-	mbr, err := getMBRDisk(name)
+	mbr, err := GetMBRDisk(name)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo leer el MBR del disco : "+err.Error(), r.Linea, r.Columna)
 		return ""
@@ -389,7 +407,7 @@ func (r *REP) RepSB(id string, ctx *Contexto) string {
 		return ""
 	}
 	//Obtener MBR del disco donde esta la particion
-	mbr, err := getMBRDisk(partMontada.DiskName)
+	mbr, err := GetMBRDisk(partMontada.DiskName)
 	if err != nil {
 		ctx.AgregarError("Error : El disco no existe o hubo error al leer su MBR :"+err.Error(), r.Linea, r.Columna)
 		return ""
@@ -439,7 +457,7 @@ func (r *REP) RepBM(ctx *Contexto, id string, tipo bool, path string) {
 		return
 	}
 	//Obtener MBR del disco donde esta la particion
-	mbr, err := getMBRDisk(partMontada.DiskName)
+	mbr, err := GetMBRDisk(partMontada.DiskName)
 	if err != nil {
 		ctx.AgregarError("Error : El disco no existe o hubo error al leer su MBR :"+err.Error(), r.Linea, r.Columna)
 		return
@@ -479,7 +497,9 @@ func (r *REP) RepBM(ctx *Contexto, id string, tipo bool, path string) {
 	//Obtener el bitmap
 	bmInode := sb.Bitmap(ctx, partMontada.DiskName, tipo)
 	//Crear archivo con el path y escribir el bitmap
-	file, err = os.Create(path)
+	path_ := strings.Split(path, "/")
+	nameRep := path_[len(path_)-1]
+	file, err = os.Create("./REP/" + nameRep + ".txt")
 	if err != nil {
 		ctx.AgregarError("Error al crear el archivo del bitmap: "+err.Error(), r.Linea, r.Columna)
 		return
@@ -518,14 +538,18 @@ func (r *REP) RepBM(ctx *Contexto, id string, tipo bool, path string) {
 // Generar archivo .dot y .png
 func (r *REP) GenerarArchivoDotYPng(graphviz string, path string, ctx *Contexto) {
 	//Crear directorios del path si no existen
-	dirs := filepath.Dir(path)
-	err := os.MkdirAll(dirs, 0777)
-	if err != nil {
-		ctx.AgregarError("Error: No se pudo crear el directorio del archivo .dot y .png, "+err.Error(), r.Linea, r.Columna)
-		return
-	}
+	/*
+		dirs := filepath.Dir(path)
+		err := os.MkdirAll(dirs, 0777)
+		if err != nil {
+			ctx.AgregarError("Error: No se pudo crear el directorio del archivo .dot y .png, "+err.Error(), r.Linea, r.Columna)
+			return
+		}
+	*/
 	//Generar archivo .dot
-	file, err := os.Create(path + ".dot")
+	path_ := strings.Split(path, "/")
+	nameRep := path_[len(path_)-1]
+	file, err := os.Create("./REP/" + nameRep + ".dot")
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo crear el archivo .dot, "+err.Error(), r.Linea, r.Columna)
 		return
@@ -533,10 +557,16 @@ func (r *REP) GenerarArchivoDotYPng(graphviz string, path string, ctx *Contexto)
 	defer file.Close()
 	file.WriteString(graphviz)
 	//Generar archivo .png
-	cmd := exec.Command("dot", "-Tpng", path+".dot", "-o", path+".png")
+	cmd := exec.Command("dot", "-Tpng", "./REP/"+nameRep+".dot", "-o", "./REP/"+nameRep+".png")
 	err = cmd.Run()
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo generar el archivo .png, "+err.Error(), r.Linea, r.Columna)
+		return
+	}
+	//Eliminar archivo .dot
+	err = os.Remove("./REP/" + nameRep + ".dot")
+	if err != nil {
+		ctx.AgregarError("Error: No se pudo eliminar el archivo .dot, "+err.Error(), r.Linea, r.Columna)
 		return
 	}
 }

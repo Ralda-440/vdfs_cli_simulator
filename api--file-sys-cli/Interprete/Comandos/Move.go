@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -106,7 +105,9 @@ func (mv *Move) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Imprimir mensaje de exito
-	fmt.Println("----------Comando MOVE--------------")
-	fmt.Println("Se movio el archivo: " + path + " al destino: " + destino)
+	//fmt.Println("----------Comando MOVE--------------")
+	//fmt.Println("Se movio el archivo: " + path + " al destino: " + destino)
+	ctx.AgregarOutput("-------------Comando MOVE--------------")
+	ctx.AgregarOutput("Se movio el archivo: \"" + path + "\" al destino: \"" + destino + "\" correctamente")
 	return nil
 }

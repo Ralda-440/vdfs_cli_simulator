@@ -19,7 +19,7 @@ func generateRandomSignature() int64 {
 }
 
 // Obtiene el MBR del disco
-func getMBRDisk(name string) (*structs.MBR, error) {
+func GetMBRDisk(name string) (*structs.MBR, error) {
 	// Leer el MBR del disco
 	file, err := os.Open("./MIA/P1/" + name + ".dsk")
 	if err != nil {
@@ -111,7 +111,7 @@ func (g *GrupoParticion) ToBytes() []byte {
 // Obtener el super bloque de la particion
 func getSuperBloque(ctx *Contexto, driveletter string, partName string) (*Super_Bloque, error) {
 	//Obtener MBR del disco donde esta la particion
-	mbr, err := getMBRDisk(driveletter)
+	mbr, err := GetMBRDisk(driveletter)
 	if err != nil {
 		ctx.AgregarError("Error : El disco no existe o hubo error al leer su MBR :"+err.Error(), 0, 0)
 		return nil, err

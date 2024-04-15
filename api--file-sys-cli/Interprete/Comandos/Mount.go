@@ -3,7 +3,6 @@ package comandos
 import (
 	structs "app/Interprete/Structs"
 	"encoding/binary"
-	"fmt"
 	"strconv"
 )
 
@@ -21,7 +20,7 @@ func (m *Mount) Ejecutar(ctx *Contexto) interface{} {
 	//Verificar si hay parametros
 	if len(m.Parametros) == 0 {
 		//Si no hay parametros, listar particiones montadas
-		m.ListarParticionesMontadas()
+		m.ListarParticionesMontadas(ctx)
 		return nil
 	}
 	//Verificar Parametros Obligatorios -driveletter -name
@@ -37,7 +36,7 @@ func (m *Mount) Ejecutar(ctx *Contexto) interface{} {
 	driveLetter := m.Parametros["-driveletter"]
 	name := m.Parametros["-name"]
 	//Obtener mbr del Disco
-	mbr, err := getMBRDisk(driveLetter)
+	mbr, err := GetMBRDisk(driveLetter)
 	if err != nil {
 		ctx.AgregarError("Error : No se puedo leer el MBR del disco"+err.Error(), m.Linea, m.Columna)
 		return nil
@@ -53,6 +52,7 @@ func (m *Mount) Ejecutar(ctx *Contexto) interface{} {
 	}
 	//Montar particion
 	//Si es Primaria o Extendida
+	var id string
 	if particion != nil {
 		if particion.Part_type == 'E' {
 			ctx.AgregarError("Error : No se puede montar una particion Extendida", m.Linea, m.Columna)
@@ -60,7 +60,7 @@ func (m *Mount) Ejecutar(ctx *Contexto) interface{} {
 		}
 		//Actualizar atributo Part_status
 		particion.Part_status = '1'
-		id := particion.GenerarID(driveLetter)
+		id = particion.GenerarID(driveLetter)
 		//Agregar particion montada
 		ParticionesMontadas.AddParticionPrimaria(driveLetter, id, name, string(particion.Part_fit), particion.Part_start)
 		//Escribir particion en el disco
@@ -81,22 +81,27 @@ func (m *Mount) Ejecutar(ctx *Contexto) interface{} {
 			return nil
 		}
 		//Agregar particion montada
-		ParticionesMontadas.AddParticionLogica(driveLetter, name, string(ebr.Part_fit), ebr.Part_start+int64(binary.Size(structs.EBR{})))
+		id = ParticionesMontadas.AddParticionLogica(driveLetter, name, string(ebr.Part_fit), ebr.Part_start+int64(binary.Size(structs.EBR{})))
 	}
-	fmt.Println("----------Comando MOUNT----------")
-	fmt.Println("Comando ejecutado con exito")
+	//fmt.Println("----------Comando MOUNT----------")
+	//fmt.Println("Comando ejecutado con exito")
+	ctx.AgregarOutput("----------Comando MOUNT----------")
+	ctx.AgregarOutput("Particion: \"" + name + "\" con ID: \"" + id + "\" Ubicada en el Disco: \"" + driveLetter + "\" Montada con exito")
 	return nil
 }
 
 // Listar particiones montadas
-func (m *Mount) ListarParticionesMontadas() {
-	fmt.Println("----------Particiones Montadas----------")
+func (m *Mount) ListarParticionesMontadas(ctx *Contexto) {
+	//fmt.Println("----------Particiones Montadas----------")
+	ctx.AgregarOutput("----------Particiones Montadas----------")
 	if len(ParticionesMontadas.Particiones) == 0 {
-		fmt.Println("No hay particiones montadas")
+		//fmt.Println("No hay particiones montadas")
+		ctx.AgregarOutput("No hay particiones montadas")
 		return
 	}
 	for _, particion := range ParticionesMontadas.Particiones {
-		fmt.Println("Disco: " + particion.DiskName + " ID: " + particion.Id + " Nombre: " + particion.PartName)
+		//fmt.Println("Disco: " + particion.DiskName + " ID: " + particion.Id + " Nombre: " + particion.PartName)
+		ctx.AgregarOutput("Disco: \"" + particion.DiskName + "\" ID: \"" + particion.Id + " \"Nombre: \"" + particion.PartName + "\"")
 	}
 }
 
@@ -128,11 +133,12 @@ func (pm *PartMounts) AddParticionPrimaria(diskName string, id string, partName 
 }
 
 // Agregar particion montada Logica
-func (pm *PartMounts) AddParticionLogica(diskName string, partName string, fit string, startSuperBloque int64) {
+func (pm *PartMounts) AddParticionLogica(diskName string, partName string, fit string, startSuperBloque int64) string {
 	//Crear ID
 	id := pm.GenerarID(diskName)
 	//Agregar particion
 	pm.Particiones = append(pm.Particiones, PartMount{DiskName: diskName, Id: id, PartName: partName, Fit: fit, Start_SuperBloque: startSuperBloque})
+	return id
 }
 
 // Desmontar particion

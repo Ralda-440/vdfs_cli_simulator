@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -124,7 +123,9 @@ func (mkusr *Mkusr) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Mensaje de exito
-	fmt.Println("----------Comando MKUSR--------------")
-	fmt.Println("Usuario creado con exito: " + user)
+	//fmt.Println("----------Comando MKUSR--------------")
+	//fmt.Println("Usuario creado con exito: " + user)
+	ctx.AgregarOutput("--------------------Comando MKUSR--------------------")
+	ctx.AgregarOutput("Usuario: \"" + user + "\" con UID: \"" + strconv.Itoa(UID) + "\" y Grupo: \"" + grp + "\" creado con exito en la particion con Id: \"" + idPart + "\"")
 	return nil
 }

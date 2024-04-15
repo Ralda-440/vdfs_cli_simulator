@@ -16,11 +16,17 @@ const SideNav = () => {
       <div className="flex flex-col space-y-6 w-full">
         <Link
           href="/"
+          style={{
+            padding: '15%',
+          }}
           className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b border-zinc-200 h-12 w-full"
           shallow
         >
           <Icon icon="grommet-icons:projects" width="24" height="24" />
-          <span className="font-bold text-xl hidden md:flex">MIA P2 202103216</span>
+          <span 
+          className="font-bold text-xl hidden md:flex"
+          
+          >MIA P2 202103216</span>
         </Link>
 
         <div className="flex flex-col space-y-2  md:px-6 ">

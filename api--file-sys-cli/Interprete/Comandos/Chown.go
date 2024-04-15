@@ -1,7 +1,6 @@
 package comandos
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -108,7 +107,9 @@ func (chown *Chown) Ejecutar(ctx *Contexto) interface{} {
 	if ctx.HayErrores() {
 		return nil
 	}
-	fmt.Println("----------Comando CHOWN--------------")
-	fmt.Println("Se cambio el propietario de la carpeta/archivo: " + path + " al usuario: " + usr)
+	//fmt.Println("----------Comando CHOWN--------------")
+	//fmt.Println("Se cambio el propietario de la carpeta/archivo: " + path + " al usuario: " + usr)
+	ctx.AgregarOutput("-------------Comando CHOWN--------------")
+	ctx.AgregarOutput("Se cambio el propietario de la carpeta/archivo: \"" + path + "\" al usuario: \"" + usr + "\" correctamente")
 	return nil
 }
