@@ -161,7 +161,7 @@ func (r *REP) RepJournaling(ctx *Contexto, id string) string {
 		return ""
 	}
 	//Recuperar SuperBloque
-	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
+	superBloque, err := GetSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo recuperar el superBloque", r.Linea, r.Columna)
 		return ""
@@ -208,7 +208,7 @@ func (r *REP) RepLs(ctx *Contexto, id string, ruta string) string {
 		return ""
 	}
 	//Recuperar SuperBloque
-	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
+	superBloque, err := GetSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo recuperar el superBloque", r.Linea, r.Columna)
 		return ""
@@ -226,7 +226,7 @@ func (r *REP) RepLs(ctx *Contexto, id string, ruta string) string {
 		rutaArray = rutaArray[:len(rutaArray)-1]
 	}
 	//Reporte Ls
-	graphvisLs := superBloque.ReporteLs(ctx, partMontada.DiskName, rutaArray)
+	graphvisLs, _ := superBloque.ReporteLs(ctx, partMontada.DiskName, rutaArray)
 	//Verificar si hay errores
 	if ctx.HayErrores() {
 		ctx.AgregarError("Error: No se pudo generar el reporte de ls", r.Linea, r.Columna)
@@ -244,7 +244,7 @@ func (r *REP) RepFile(ctx *Contexto, id string, ruta string, path string) {
 		return
 	}
 	//Recuperar SuperBloque
-	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
+	superBloque, err := GetSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo recuperar el superBloque", r.Linea, r.Columna)
 		return
@@ -293,7 +293,7 @@ func (r *REP) RepBlock(ctx *Contexto, id string) string {
 		return ""
 	}
 	//Recuperar SuperBloque
-	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
+	superBloque, err := GetSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo recuperar el superBloque", r.Linea, r.Columna)
 		return ""
@@ -320,7 +320,7 @@ func (r *REP) RepTree(ctx *Contexto, id string) string {
 		return ""
 	}
 	//Recuperar SuperBloque
-	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
+	superBloque, err := GetSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo recuperar el superBloque", r.Linea, r.Columna)
 		return ""
@@ -347,7 +347,7 @@ func (r *REP) RepInode(ctx *Contexto, id string) string {
 		return ""
 	}
 	//Recuperar SuperBloque
-	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
+	superBloque, err := GetSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo recuperar el superBloque", r.Linea, r.Columna)
 		return ""

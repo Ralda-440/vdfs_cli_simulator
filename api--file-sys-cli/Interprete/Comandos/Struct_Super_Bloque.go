@@ -146,7 +146,7 @@ func (sb *Super_Bloque) LimpiarBitmapsInodosBloques(ctx *Contexto, driveLetter s
 }
 
 // Reporte ls
-func (sb *Super_Bloque) ReporteLs(ctx *Contexto, driveLetter string, path []string) string {
+func (sb *Super_Bloque) ReporteLs(ctx *Contexto, driveLetter string, path []string) (string, map[string]string) {
 	//Recuperar inodo del archivo
 	var inodo *structs.Inodes = nil
 	if len(path) == 0 {
@@ -156,19 +156,19 @@ func (sb *Super_Bloque) ReporteLs(ctx *Contexto, driveLetter string, path []stri
 	}
 	if inodo == nil || ctx.HayErrores() {
 		ctx.AgregarError("Error: No existe el path para listar el archivo", 0, 0)
-		return ""
+		return "", nil
 	}
 	//Verificar que el inodo ser Carpeta
 	if inodo.I_type != 0 {
 		ctx.AgregarError("Error: El path no es de una carpeta", 0, 0)
-		return ""
+		return "", nil
 	}
 	//Obtener Graphviz
-	graphviz := sb.ReporteLsInodo(ctx, driveLetter, inodo.I_block[:])
+	graphviz, content := sb.ReporteLsInodo(ctx, driveLetter, inodo.I_block[:])
 	//Verificar si hay errores
 	if ctx.HayErrores() {
 		ctx.AgregarError("Error: No se pudo listar el archivo", 0, 0)
-		return ""
+		return "", nil
 	}
 	graphviz = `
 	digraph G {
@@ -189,12 +189,13 @@ func (sb *Super_Bloque) ReporteLs(ctx *Contexto, driveLetter string, path []stri
 				> shape=box style=invisible ] 
 	}
 	`
-	return graphviz
+	return graphviz, content
 }
 
 // Reporte ls inodo
-func (sb *Super_Bloque) ReporteLsInodo(ctx *Contexto, driveLetter string, apuntadores []int32) string {
+func (sb *Super_Bloque) ReporteLsInodo(ctx *Contexto, driveLetter string, apuntadores []int32) (string, map[string]string) {
 	graphviz := ""
+	content := map[string]string{}
 	//Iterar todos los apuntadores
 	for pos, numBloque := range apuntadores {
 		if numBloque == -1 {
@@ -202,26 +203,38 @@ func (sb *Super_Bloque) ReporteLsInodo(ctx *Contexto, driveLetter string, apunta
 		}
 		if pos == 12 {
 			//Graphviz del Bloque indirecto simple
-			graphviz += sb.ReporteLsInodoApuntadorIndirectoSimple(ctx, driveLetter, int(numBloque))
+			graphviz_, content_ := sb.ReporteLsInodoApuntadorIndirectoSimple(ctx, driveLetter, int(numBloque))
 			//Verificar si hay errores
 			if ctx.HayErrores() {
-				return ""
+				return "", nil
+			}
+			graphviz += graphviz_
+			for k, v := range content_ {
+				content[k] = v
 			}
 			continue
 		} else if pos == 13 {
 			//Graphviz del Bloque indirecto doble
-			graphviz += sb.ReporteLsInodoApuntadorIndirectoDoble(ctx, driveLetter, int(numBloque))
+			graphviz_, content_ := sb.ReporteLsInodoApuntadorIndirectoDoble(ctx, driveLetter, int(numBloque))
 			//Verificar si hay errores
 			if ctx.HayErrores() {
-				return ""
+				return "", nil
+			}
+			graphviz += graphviz_
+			for k, v := range content_ {
+				content[k] = v
 			}
 			continue
 		} else if pos == 14 {
 			//Graphviz del Bloque indirecto triple
-			graphviz += sb.ReporteLsInodoApuntadorIndirectoTriple(ctx, driveLetter, int(numBloque))
+			graphviz_, content_ := sb.ReporteLsInodoApuntadorIndirectoTriple(ctx, driveLetter, int(numBloque))
 			//Verificar si hay errores
 			if ctx.HayErrores() {
-				return ""
+				return "", nil
+			}
+			graphviz += graphviz_
+			for k, v := range content_ {
+				content[k] = v
 			}
 			continue
 		}
@@ -229,7 +242,7 @@ func (sb *Super_Bloque) ReporteLsInodo(ctx *Contexto, driveLetter string, apunta
 		bloque := sb.RecuperarBloqueCarpeta(ctx, driveLetter, int(numBloque))
 		if bloque == nil || ctx.HayErrores() {
 			ctx.AgregarError("Error: No se pudo recuperar el bloque", 0, 0)
-			return ""
+			return "", nil
 		}
 		//Iterar todos los archivos y carpetas
 		for _, contenido := range bloque.B_content {
@@ -244,7 +257,7 @@ func (sb *Super_Bloque) ReporteLsInodo(ctx *Contexto, driveLetter string, apunta
 			inodo := sb.RecuperarInodo(ctx, driveLetter, int(contenido.B_inodo))
 			//Verificar si hay errores
 			if ctx.HayErrores() {
-				return ""
+				return "", nil
 			}
 			//Buscar UID y GID del inodo
 			owner := ""
@@ -252,7 +265,7 @@ func (sb *Super_Bloque) ReporteLsInodo(ctx *Contexto, driveLetter string, apunta
 			infUsuario, infGrupo := sb.BuscarUsuarioGrupoPorID(ctx, driveLetter, inodo.I_uid, inodo.I_gid)
 			//Verificar si hay errores
 			if ctx.HayErrores() {
-				return ""
+				return "", nil
 			}
 			if infUsuario != nil {
 				owner = infUsuario.Usuario
@@ -267,19 +280,28 @@ func (sb *Super_Bloque) ReporteLsInodo(ctx *Contexto, driveLetter string, apunta
 			//Agregar al graphviz
 			_, graphvizLs := inodo.GetGraph(int(contenido.B_inodo), nombre, true, owner, grupo)
 			graphviz += graphvizLs
+			//Tipo content
+			var tipo string
+			if inodo.I_type == 0 {
+				tipo = "dir"
+			} else {
+				tipo = "file"
+			}
+			content[nombre] = tipo
 		}
 	}
-	return graphviz
+	return graphviz, content
 }
 
 // Reporte ls inodo apuntador indirecto simple
-func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoSimple(ctx *Contexto, driveLetter string, numBloque int) string {
+func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoSimple(ctx *Contexto, driveLetter string, numBloque int) (string, map[string]string) {
 	graphviz := ""
+	content := map[string]string{}
 	//Recuperar bloque
 	bloque := sb.RecuperarBloqueIndirecto(ctx, driveLetter, numBloque)
 	if bloque == nil || ctx.HayErrores() {
 		ctx.AgregarError("Error: No se pudo recuperar el bloque", 0, 0)
-		return ""
+		return "", nil
 	}
 	//Iterar todos los apuntadores
 	for _, numBloque := range bloque.B_pointers {
@@ -290,7 +312,7 @@ func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoSimple(ctx *Contexto, dr
 		bloque := sb.RecuperarBloqueCarpeta(ctx, driveLetter, int(numBloque))
 		if bloque == nil || ctx.HayErrores() {
 			ctx.AgregarError("Error: No se pudo recuperar el bloque", 0, 0)
-			return ""
+			return "", nil
 		}
 		//Iterar todos los archivos y carpetas
 		for _, contenido := range bloque.B_content {
@@ -302,7 +324,7 @@ func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoSimple(ctx *Contexto, dr
 			inodo := sb.RecuperarInodo(ctx, driveLetter, int(contenido.B_inodo))
 			//Verificar si hay errores
 			if ctx.HayErrores() {
-				return ""
+				return "", nil
 			}
 			//Buscar UID y GID del inodo
 			owner := ""
@@ -310,7 +332,7 @@ func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoSimple(ctx *Contexto, dr
 			infUsuario, infGrupo := sb.BuscarUsuarioGrupoPorID(ctx, driveLetter, inodo.I_uid, inodo.I_gid)
 			//Verificar si hay errores
 			if ctx.HayErrores() {
-				return ""
+				return "", nil
 			}
 			if infUsuario != nil {
 				owner = infUsuario.Usuario
@@ -325,19 +347,28 @@ func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoSimple(ctx *Contexto, dr
 			//Agregar al graphviz
 			_, graphvizLs := inodo.GetGraph(int(contenido.B_inodo), nombre, true, owner, grupo)
 			graphviz += graphvizLs
+			//Tipo content
+			var tipo string
+			if inodo.I_type == 0 {
+				tipo = "dir"
+			} else {
+				tipo = "file"
+			}
+			content[nombre] = tipo
 		}
 	}
-	return graphviz
+	return graphviz, content
 }
 
 // Reporte ls inodo apuntador indirecto doble
-func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoDoble(ctx *Contexto, driveLetter string, numBloque int) string {
+func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoDoble(ctx *Contexto, driveLetter string, numBloque int) (string, map[string]string) {
 	graphviz := ""
+	content := map[string]string{}
 	//Recuperar bloque
 	bloque := sb.RecuperarBloqueIndirecto(ctx, driveLetter, numBloque)
 	if bloque == nil || ctx.HayErrores() {
 		ctx.AgregarError("Error: No se pudo recuperar el bloque", 0, 0)
-		return ""
+		return "", nil
 	}
 	//Iterar todos los apuntadores
 	for _, numBloque := range bloque.B_pointers {
@@ -345,23 +376,26 @@ func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoDoble(ctx *Contexto, dri
 			continue
 		}
 		//Agregar al graphviz
-		graphviz += sb.ReporteLsInodoApuntadorIndirectoSimple(ctx, driveLetter, int(numBloque))
+		graphviz_, content_ := sb.ReporteLsInodoApuntadorIndirectoSimple(ctx, driveLetter, int(numBloque))
 		//Verificar si hay errores
 		if ctx.HayErrores() {
-			return ""
+			return "", nil
 		}
+		graphviz += graphviz_
+		content = content_
 	}
-	return graphviz
+	return graphviz, content
 }
 
 // Reporte ls inodo apuntador indirecto triple
-func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoTriple(ctx *Contexto, driveLetter string, numBloque int) string {
+func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoTriple(ctx *Contexto, driveLetter string, numBloque int) (string, map[string]string) {
 	graphviz := ""
+	content := map[string]string{}
 	//Recuperar bloque
 	bloque := sb.RecuperarBloqueIndirecto(ctx, driveLetter, numBloque)
 	if bloque == nil || ctx.HayErrores() {
 		ctx.AgregarError("Error: No se pudo recuperar el bloque", 0, 0)
-		return ""
+		return "", nil
 	}
 	//Iterar todos los apuntadores
 	for _, numBloque := range bloque.B_pointers {
@@ -369,13 +403,15 @@ func (sb *Super_Bloque) ReporteLsInodoApuntadorIndirectoTriple(ctx *Contexto, dr
 			continue
 		}
 		//Agregar al graphviz
-		graphviz += sb.ReporteLsInodoApuntadorIndirectoDoble(ctx, driveLetter, int(numBloque))
+		graphviz_, content_ := sb.ReporteLsInodoApuntadorIndirectoDoble(ctx, driveLetter, int(numBloque))
 		//Verificar si hay errores
 		if ctx.HayErrores() {
-			return ""
+			return "", nil
 		}
+		graphviz += graphviz_
+		content = content_
 	}
-	return graphviz
+	return graphviz, content
 }
 
 // Reporte Tree Graphviz

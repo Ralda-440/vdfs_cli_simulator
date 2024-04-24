@@ -51,7 +51,7 @@ func (rn *Rename) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Recuperar SuperBloque
-	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
+	superBloque, err := GetSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo recuperar el superBloque", rn.Linea, rn.Columna)
 		return nil

@@ -109,7 +109,7 @@ func (g *GrupoParticion) ToBytes() []byte {
 }
 
 // Obtener el super bloque de la particion
-func getSuperBloque(ctx *Contexto, driveletter string, partName string) (*Super_Bloque, error) {
+func GetSuperBloque(ctx *Contexto, driveletter string, partName string) (*Super_Bloque, error) {
 	//Obtener MBR del disco donde esta la particion
 	mbr, err := GetMBRDisk(driveletter)
 	if err != nil {

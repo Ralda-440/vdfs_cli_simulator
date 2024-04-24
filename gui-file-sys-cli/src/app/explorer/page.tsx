@@ -2,13 +2,15 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Box, IconButton, Input,Alert,AlertIcon,AlertTitle,AlertDescription} from '@chakra-ui/react';
+import { Box, IconButton, Input,Alert,AlertIcon,AlertTitle,AlertDescription, Button} from '@chakra-ui/react';
 import { SlActionUndo } from 'react-icons/sl';
 import ItemContent from '@/components/item-content';
+import path from 'path';
 
 const ExplorerPage = () => {
   const [inputpath, setInputpath] = useState<string>('/');
   const [content, setContent] = useState<Content>({});
+  const [isDisabledLogout, setIsDisabledLogout] = useState<boolean>(true);
 
   useEffect(() => {
     const path = localStorage.getItem('path');
@@ -19,6 +21,18 @@ const ExplorerPage = () => {
       setInputpath('/');
     }
     fetchExplorer()
+    //Verificar si hay Login Activo
+    fetch('http://localhost:4005/loginActivo', {
+      method: 'GET',
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.activo) {
+          setIsDisabledLogout(false);
+        }
+      });
   }, []);
 
   type Content = {
@@ -52,15 +66,9 @@ const ExplorerPage = () => {
     });
     const data = await response.json();
     if (data.errs != null && data.errs.length > 0) {
-      <Alert status="error">
-        <AlertIcon />
-        <AlertTitle mr={2}>Error!</AlertTitle>
-        <AlertDescription>
-          {data.errs.map((element:Error_) => {
-            return element.msg;
-          }).join('\n')}
-        </AlertDescription>
-      </Alert>
+      alert(data.errs.map((element:Error_) => {
+        return element.msg;
+      }).join('\n'))
       localStorage.setItem('path', '/');
       return;
     }
@@ -98,7 +106,7 @@ const ExplorerPage = () => {
             }}
           />
         </Box>
-        <Box display={'inline-block'} width={'95%'}>
+        <Box display={'inline-block'} width={'75%'}>
           <Input
             width={'100%'}
             size={'lg'}
@@ -111,6 +119,26 @@ const ExplorerPage = () => {
             readOnly
           ></Input>
         </Box>
+        <Box
+          display={'inline-block'} width={'20%'}
+          textAlign={'right'}
+        >
+          <Button
+            isDisabled={isDisabledLogout}
+            colorScheme='red'
+            size={'lg'}
+            onClick={ async () => {
+              setIsDisabledLogout(true);
+              const path = localStorage.getItem('path');
+              const nameDisk = path?.split('/')[1] || '';
+              localStorage.setItem('path', '/'+nameDisk);
+              await fetch('http://localhost:4005/logout', {
+                method: 'GET',
+              });
+              await fetchExplorer();
+            }}
+          >Logout</Button>
+        </Box>
       </Box>
       <Box
         padding={'1%'}
@@ -118,7 +146,7 @@ const ExplorerPage = () => {
         {
           Object.keys(content).map((name) => {
             return (
-              <ItemContent key={name} nombre={name} tipo={content[name]} setContent={setContent} fetchExplorer={fetchExplorer} /> 
+              <ItemContent key={name} nombre={name} tipo={content[name]} setContent={setContent} fetchExplorer={fetchExplorer} setIsDisabledLogout={setIsDisabledLogout} /> 
             );
           })
         }

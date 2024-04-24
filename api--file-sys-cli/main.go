@@ -23,6 +23,8 @@ func main() {
 	if os.IsNotExist(err) {
 		os.MkdirAll("./REP", os.ModePerm)
 	}
+	//Login Activo
+	loginActivo := tools.NewLoginActivo()
 	//Contexto de la Consola
 	ctx := comandos.NewContexto()
 	//Servidor
@@ -85,6 +87,7 @@ func main() {
 			errs = append(errs, err.Error())
 		}
 		ctx = comandos.NewContexto()
+		loginActivo = tools.NewLoginActivo()
 		return c.JSON(&fiber.Map{
 			"errs": errs,
 		})
@@ -143,8 +146,107 @@ func main() {
 				"content": particiones,
 				"errs":    nil,
 			})
+		} else if len(slicePath) >= 2 {
+			// Si la longitud es 2, entonces se esta pidiendo los archivos de una particion
+			driveletter := strings.Split(slicePath[0], ".")[0]
+			partname := slicePath[1]
+			superBloque, err := comandos.GetSuperBloque(ctx, driveletter, partname)
+			if err != nil {
+				ctx.AgregarError(err.Error(), 0, 0)
+				return c.JSON(&fiber.Map{
+					"content": nil,
+					"errs":    ctx.GetErrores(),
+				})
+			}
+			//Verificar si hay errores
+			if ctx.HayErrores() {
+				return c.JSON(&fiber.Map{
+					"content": nil,
+					"errs":    ctx.GetErrores(),
+				})
+			}
+			//[]path sin el nombre del disco y de la particion
+			path_ := slicePath[2:]
+			_, content := superBloque.ReporteLs(ctx, driveletter, path_)
+			//Verificar si hay errores
+			if ctx.HayErrores() {
+				return c.JSON(&fiber.Map{
+					"content": nil,
+					"errs":    ctx.GetErrores(),
+				})
+			}
+			return c.JSON(&fiber.Map{
+				"content": content,
+				"errs":    nil,
+			})
 		}
 		return nil
+	})
+
+	app.Get("/loginActivo", func(c *fiber.Ctx) error {
+		return c.JSON(loginActivo)
+	})
+
+	app.Get("/logout", func(c *fiber.Ctx) error {
+		loginActivo = tools.NewLoginActivo()
+		return c.JSON(&fiber.Map{
+			"errs": nil,
+		})
+	})
+
+	app.Post("/login", func(c *fiber.Ctx) error {
+		body := &fiber.Map{
+			"partName": "",
+			"diskName": "",
+			"usr":      "",
+			"pwd":      "",
+		}
+		err := c.BodyParser(body)
+		if err != nil {
+			return c.JSON(&fiber.Map{
+				"errs": []comandos.Error{{Msg: err.Error()}},
+			})
+		}
+		//Buscar SuperBloque
+		superBloque, err := comandos.GetSuperBloque(ctx, (*body)["diskName"].(string), (*body)["partName"].(string))
+		if err != nil {
+			return c.JSON(&fiber.Map{
+				"errs": []comandos.Error{{Msg: err.Error()}},
+			})
+		}
+		//Verificar si hay errores
+		if ctx.HayErrores() {
+			return c.JSON(&fiber.Map{
+				"errs": ctx.GetErrores(),
+			})
+		}
+		//Recuperar usuarios y grupos de la particion
+		usuarios, _, err := superBloque.RecuperarUsuariosGrupos(ctx, (*body)["diskName"].(string))
+		if err != nil {
+			return c.JSON(&fiber.Map{
+				"errs": []comandos.Error{{Msg: err.Error()}},
+			})
+		}
+		//Verificar si hay
+		if ctx.HayErrores() {
+			return c.JSON(&fiber.Map{
+				"errs": ctx.GetErrores(),
+			})
+		}
+		//Verificar si el usuario y contraseña existen
+		for _, usr := range usuarios {
+			if usr.Usuario == (*body)["usr"].(string) {
+				if usr.Pass == (*body)["pwd"].(string) {
+					loginActivo.ActivarLogin((*body)["partName"].(string), (*body)["diskName"].(string))
+					return c.JSON(&fiber.Map{
+						"errs": nil,
+					})
+				}
+			}
+		}
+		return c.JSON(&fiber.Map{
+			"errs": []comandos.Error{{Msg: "Usuario o Contraseña incorrectos"}},
+		})
 	})
 
 	app.Listen(":4005")

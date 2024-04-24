@@ -31,7 +31,7 @@ func (loss *Loss) Ejecutar(ctx *Contexto) interface{} {
 		return nil
 	}
 	//Obtener SuperBloque
-	superBloque, err := getSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
+	superBloque, err := GetSuperBloque(ctx, partMontada.DiskName, partMontada.PartName)
 	if err != nil {
 		ctx.AgregarError("Error: No se pudo obtener el super bloque de la particion", loss.Linea, loss.Columna)
 		return nil

@@ -15,6 +15,24 @@ type PathExplorer struct {
 	Path string `json:"path"`
 }
 
+type LoginActivo struct {
+	Activo   bool   `json:"activo"`
+	PartName string `json:"partName"`
+	DiskName string `json:"diskName"`
+}
+
+// Activar Login
+func (la *LoginActivo) ActivarLogin(partName, diskName string) {
+	la.Activo = true
+	la.PartName = partName
+	la.DiskName = diskName
+}
+
+// Nuevo Login Activo
+func NewLoginActivo() *LoginActivo {
+	return &LoginActivo{Activo: false, PartName: ""}
+}
+
 type ErrorListener_ struct {
 	antlr.ErrorListener
 	Ctx *comandos.Contexto
