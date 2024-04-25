@@ -98,6 +98,13 @@ func (lg *Login) Ejecutar(ctx *Contexto) interface{} {
 // Sesion de Usuario
 var SesionActiva Sesion
 
+// Nueva Sesion
+func NewSesionActiva() Sesion {
+	return Sesion{
+		Activa: false,
+	}
+}
+
 type Sesion struct {
 	Usuario     string //Nombre de usuario
 	Password    string //Contraseña

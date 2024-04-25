@@ -113,6 +113,11 @@ type PartMount struct {
 	Start_SuperBloque int64
 }
 
+// NewPartMounts crea una nueva lista de particiones montadas
+func NewPartMounts() PartMounts {
+	return PartMounts{Particiones: []PartMount{}}
+}
+
 type PartMounts struct {
 	Particiones []PartMount
 }

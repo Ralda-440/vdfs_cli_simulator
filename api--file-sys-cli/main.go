@@ -88,6 +88,9 @@ func main() {
 		}
 		ctx = comandos.NewContexto()
 		loginActivo = tools.NewLoginActivo()
+		comandos.SesionActiva = comandos.NewSesionActiva()
+		comandos.ParticionesMontadas = comandos.NewPartMounts()
+		comandos.CountPartLogicas = 0
 		return c.JSON(&fiber.Map{
 			"errs": errs,
 		})
@@ -246,6 +249,59 @@ func main() {
 		}
 		return c.JSON(&fiber.Map{
 			"errs": []comandos.Error{{Msg: "Usuario o Contraseña incorrectos"}},
+		})
+	})
+
+	//Contenido file
+	app.Post("/contentFile", func(c *fiber.Ctx) error {
+		path := tools.PathExplorer{}
+
+		if err := c.BodyParser(&path); err != nil {
+			return c.JSON(&fiber.Map{
+				"content": nil,
+				"errs":    []comandos.Error{{Msg: err.Error(), Linea: 0, Columna: 0}},
+			})
+		}
+		slicePath := strings.Split(path.Path, "/")
+		//Eliminar el primer elemento
+		slicePath = slicePath[1:]
+		//Verificar si la ultima posicion es ""
+		if slicePath[len(slicePath)-1] == "" {
+			slicePath = slicePath[:len(slicePath)-1]
+		}
+		// Si la longitud es 2, entonces se esta pidiendo los archivos de una particion
+		driveletter := strings.Split(slicePath[0], ".")[0]
+		partname := slicePath[1]
+		superBloque, err := comandos.GetSuperBloque(ctx, driveletter, partname)
+		if err != nil {
+			ctx.AgregarError(err.Error(), 0, 0)
+			return c.JSON(&fiber.Map{
+				"content": nil,
+				"errs":    ctx.GetErrores(),
+			})
+		}
+		//Verificar si hay errores
+		if ctx.HayErrores() {
+			return c.JSON(&fiber.Map{
+				"content": nil,
+				"errs":    ctx.GetErrores(),
+			})
+		}
+		//[]path sin el nombre del disco y de la particion
+		path_ := slicePath[2:]
+		content := superBloque.LeerContenidoArchivo(ctx, driveletter, path_)
+		//Verificar si hay errores
+		if ctx.HayErrores() {
+			return c.JSON(&fiber.Map{
+				"content": nil,
+				"errs":    ctx.GetErrores(),
+			})
+		}
+		//Convertir []byte a string
+		contentStr := string(content)
+		return c.JSON(&fiber.Map{
+			"content": contentStr,
+			"errs":    nil,
 		})
 	})
 

@@ -6,6 +6,7 @@ import { Box,Text ,useDisclosure,
   ModalContent,
   ModalBody,
   ModalCloseButton,
+  ModalHeader,
 } from '@chakra-ui/react';
 import { BsDeviceHddFill } from "react-icons/bs";
 import { AiFillFileText } from "react-icons/ai";
@@ -19,6 +20,8 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout}:
     const [hovered, setHovered] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen: isOpenContent, onOpen: onOpenContent, onClose: onCloseContent } = useDisclosure()
+    const [contentFile, setContentFile] = useState<string>("");
 
     const handleMouseEnter = () => {
         setHovered(true);
@@ -27,6 +30,12 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout}:
     const handleMouseLeave = () => {
         setHovered(false);
     };
+
+    type Error_ = {
+        msg: string;
+        linea: number;
+        columna: number;
+      };
 
     const handleDoubleClick = async () => { 
         if (tipo === "partition") {
@@ -48,8 +57,27 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout}:
                 return;
             }
         } else if (tipo === "file") {
-            return;
-        } else if (tipo === "rep ") {
+            let path = localStorage.getItem('path');
+            const response = await fetch('http://localhost:4005/contentFile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    path: path+"/"+nombre,
+                }),
+            });
+            const data = await response.json();
+            if ( data.errs !== null && data.errs.length > 0) {
+                alert(
+                    data.errs.map((err: Error_) => {
+                        return err.msg;
+                    }).join('\n'),
+                );
+                return;
+            }
+            setContentFile(data.content);
+            onOpenContent();
             return;
         }
         const path = localStorage.getItem('path');
@@ -105,6 +133,20 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout}:
           <ModalCloseButton />
           <ModalBody>
             <Login namePart={nombre} onClose={onClose} fetchExplorer={fetchExplorer} setIsDisabledLogout={setIsDisabledLogout} />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+      <Modal isOpen={isOpenContent} onClose={onCloseContent}
+        size={"full"}
+    >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>File Content: {nombre}</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text
+                whiteSpace={'pre-wrap'}
+            >{contentFile}</Text>
           </ModalBody>
         </ModalContent>
       </Modal>
