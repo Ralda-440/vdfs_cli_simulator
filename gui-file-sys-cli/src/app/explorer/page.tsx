@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { Box, IconButton, Input,Alert,AlertIcon,AlertTitle,AlertDescription, Button} from '@chakra-ui/react';
 import { SlActionUndo } from 'react-icons/sl';
 import ItemContent from '@/components/item-content';
-import path from 'path';
 
 const ExplorerPage = () => {
   const [inputpath, setInputpath] = useState<string>('/');

@@ -1,14 +1,49 @@
-import React from 'react';
+'use client'
 
-const HelpPage = () => {
+import React, {useEffect,useState} from 'react';
+import { Box } from '@chakra-ui/react';
+import ItemContent from '@/components/item-content';
+
+const Reportes = () => {
+
+  type ItemReporte = {
+    nombre  :string
+    tipo    :string 
+    content :string
+  }
+
+  const [reportes, setReportes] = useState<ItemReporte[]>([]); 
+
+  useEffect(() => {
+    //fetchReportes();
+    fetch('http://localhost:4005/reportes', {
+      method: 'GET',
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setReportes(data.files);
+        console.log(data);
+      });
+  }, []);
+
   return (
     <>
-      <span className="font-bold text-4xl">Reportes</span>
-
-      <div className="border-dashed border border-zinc-500 w-full h-12 rounded-lg"></div>
-      <div className="border-dashed border border-zinc-500 w-full h-64 rounded-lg"></div>
+      <Box
+        padding={'2%'}
+      >
+        {
+        reportes.map((reporte:ItemReporte) => {
+          return (
+          <>
+            <ItemContent nombre={reporte.nombre} tipo={reporte.tipo} contentRep={reporte.content} ></ItemContent>
+          </>
+        );
+        })}
+      </Box>
     </>
   );
 };
 
-export default HelpPage;
+export default Reportes;

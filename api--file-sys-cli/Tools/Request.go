@@ -7,6 +7,12 @@ import (
 	"github.com/antlr4-go/antlr/v4"
 )
 
+type ItemReport struct {
+	Nombre  string `json:"nombre"`
+	Tipo    string `json:"tipo"`
+	Content string `json:"content"`
+}
+
 type InputCLI struct {
 	Input string `json:"input"`
 }

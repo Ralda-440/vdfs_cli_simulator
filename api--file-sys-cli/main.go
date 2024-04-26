@@ -4,7 +4,9 @@ import (
 	comandos "app/Interprete/Comandos"
 	"app/Parser"
 	tools "app/Tools"
+	"encoding/base64"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
@@ -302,6 +304,62 @@ func main() {
 		return c.JSON(&fiber.Map{
 			"content": contentStr,
 			"errs":    nil,
+		})
+	})
+
+	app.Get("/reportes", func(c *fiber.Ctx) error {
+		//Leer los archivos de la carpeta REP
+		files, err := os.ReadDir("./REP")
+		if err != nil {
+			ctx.AgregarError("Error: "+err.Error(), 0, 0)
+			return c.JSON(&fiber.Map{
+				"files": nil,
+				"errs":  ctx.GetErrores(),
+			})
+		}
+		//Lista de Reportes
+		reportes := make([]tools.ItemReport, 0)
+		//Recorrer los archivo
+		for _, file := range files {
+			//Verificar si es un archivo
+			if !file.IsDir() {
+				//Obtener el nombre del archivo
+				nameReport := file.Name()
+				//Obtener base64
+				fileContent, err := os.ReadFile("./REP/" + nameReport)
+				if err != nil {
+					ctx.AgregarError("Error: "+err.Error(), 0, 0)
+					return c.JSON(&fiber.Map{
+						"files": nil,
+						"errs":  ctx.GetErrores(),
+					})
+				}
+				//Obtener la extension
+				ext := filepath.Ext(nameReport)
+				//Verificar si es un archivo de imagen o plano
+				var tipo string
+				var stringContent string
+				if ext == ".png" || ext == ".jpg" {
+					tipo = "image"
+					stringContent = "data:@file/png;base64," + base64.StdEncoding.EncodeToString(fileContent)
+				} else if ext == ".txt" {
+					tipo = "plain"
+					stringContent = string(fileContent)
+				} else {
+					tipo = "other"
+					stringContent = ""
+				}
+				//Agregar a la lista de reportes
+				reportes = append(reportes, tools.ItemReport{
+					Nombre:  nameReport,
+					Tipo:    tipo,
+					Content: stringContent,
+				})
+			}
+		}
+		return c.JSON(&fiber.Map{
+			"files": reportes,
+			"errs":  nil,
 		})
 	})
 

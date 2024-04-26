@@ -11,11 +11,13 @@ import { Box,Text ,useDisclosure,
 import { BsDeviceHddFill } from "react-icons/bs";
 import { AiFillFileText } from "react-icons/ai";
 import { RiDeviceFill } from "react-icons/ri";
+import { BiSolidFilePng } from "react-icons/bi";
+import { BiSolidFileTxt } from "react-icons/bi";
 import { GoFileDirectoryFill } from "react-icons/go";
 import { useState, useEffect ,useRef} from 'react';
 import Login  from '@/components/login';
  
-const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout}:ItemContentProps) => {
+const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout,contentRep}:ItemContentProps) => {
     const [selected, setSelected] = useState<boolean>(false);
     const [hovered, setHovered] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -119,10 +121,13 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout}:
             tipo === "disk" ? <BsDeviceHddFill size={100}/> : 
             tipo === "partition" ? <RiDeviceFill size={100} /> :
             tipo === "file" ? <AiFillFileText size={100} /> :
-            tipo === "dir" ? <GoFileDirectoryFill size={100} /> : null
+            tipo === "dir" ? <GoFileDirectoryFill size={100} /> :
+            tipo === "image" ? <BiSolidFilePng size={100} /> :
+            tipo === "plain" ? <BiSolidFileTxt size={100} /> : null
         }
         <Text
             userSelect={'none'}
+            maxWidth={'100%'}
         >{nombre}</Text>
     </Box>
     <Modal isOpen={isOpen} onClose={onClose}
@@ -157,9 +162,10 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout}:
 type ItemContentProps = {
     nombre: string;
     tipo: string;
-    setContent: any;
-    fetchExplorer: any;
-    setIsDisabledLogout: any;
+    setContent?: any;
+    fetchExplorer?: any;
+    setIsDisabledLogout?: any;
+    contentRep?: string;
 }
 
 export default ItemContent;
