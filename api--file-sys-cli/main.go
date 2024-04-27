@@ -7,6 +7,7 @@ import (
 	"encoding/base64"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
@@ -33,6 +34,13 @@ func main() {
 	app := fiber.New()
 
 	app.Use(cors.New())
+
+	//Endpoint Server Ready
+	app.Get("/ready", func(c *fiber.Ctx) error {
+		return c.JSON(&fiber.Map{
+			"ready": true,
+		})
+	})
 
 	//Input CLI
 	app.Post("/inputCLI", func(c *fiber.Ctx) error {
@@ -185,7 +193,11 @@ func main() {
 				"errs":    nil,
 			})
 		}
-		return nil
+		ctx.AgregarError("Error: No se pudo leer el path", 0, 0)
+		return c.JSON(&fiber.Map{
+			"content": nil,
+			"errs":    ctx.GetErrores(),
+		})
 	})
 
 	app.Get("/loginActivo", func(c *fiber.Ctx) error {
@@ -320,7 +332,7 @@ func main() {
 		//Lista de Reportes
 		reportes := make([]tools.ItemReport, 0)
 		//Recorrer los archivo
-		for _, file := range files {
+		for key, file := range files {
 			//Verificar si es un archivo
 			if !file.IsDir() {
 				//Obtener el nombre del archivo
@@ -354,6 +366,7 @@ func main() {
 					Nombre:  nameReport,
 					Tipo:    tipo,
 					Content: stringContent,
+					Key:     strconv.Itoa(key),
 				})
 			}
 		}

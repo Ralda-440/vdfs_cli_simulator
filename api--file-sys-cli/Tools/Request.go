@@ -11,6 +11,7 @@ type ItemReport struct {
 	Nombre  string `json:"nombre"`
 	Tipo    string `json:"tipo"`
 	Content string `json:"content"`
+	Key     string `json:"key"`
 }
 
 type InputCLI struct {

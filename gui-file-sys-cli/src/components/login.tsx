@@ -41,7 +41,7 @@ const Login = ({ namePart, onClose, fetchExplorer,setIsDisabledLogout }: LoginPr
     onOpen: onOpenAlert,
     onClose: onCloseAlert,
   } = useDisclosure();
-  let [msgAlert, setMsgAlert] = useState('');
+  const [msgAlert, setMsgAlert] = useState('');
 
   const handleShowClick = () => setShowPassword(!showPassword);
 
@@ -82,8 +82,8 @@ const Login = ({ namePart, onClose, fetchExplorer,setIsDisabledLogout }: LoginPr
       `${path}${path === '/' ? '' : '/'}${namePart}`,
     );
     onClose();
-    fetchExplorer();
-    setIsDisabledLogout(false);
+    fetchExplorer?.();
+    setIsDisabledLogout?.(false);
   };
 
   return (
@@ -118,8 +118,9 @@ const Login = ({ namePart, onClose, fetchExplorer,setIsDisabledLogout }: LoginPr
                   <InputGroup>
                     <InputLeftElement
                       pointerEvents="none"
-                      children={<CFaUserAlt color="gray.600" />}
-                    />
+                    >
+                    <CFaUserAlt color="gray.600" />
+                    </InputLeftElement>
                     <Input
                       type="email"
                       placeholder="Usuario"
@@ -133,9 +134,9 @@ const Login = ({ namePart, onClose, fetchExplorer,setIsDisabledLogout }: LoginPr
                   <InputGroup>
                     <InputLeftElement
                       pointerEvents="none"
-                      color="gray.600"
-                      children={<CFaLock color="gray.600" />}
-                    />
+                    >
+                    <CFaLock color="gray.600" />
+                    </InputLeftElement>
                     <Input
                       type={showPassword ? 'text' : 'password'}
                       placeholder="Password"
@@ -188,8 +189,8 @@ const Login = ({ namePart, onClose, fetchExplorer,setIsDisabledLogout }: LoginPr
 type LoginProps = {
   namePart: string;
   onClose: () => void;
-  fetchExplorer: () => void;
-  setIsDisabledLogout: any;
+  fetchExplorer?: () => Promise<void>;
+  setIsDisabledLogout?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default Login;

@@ -17,7 +17,7 @@ import { GoFileDirectoryFill } from "react-icons/go";
 import { useState, useEffect ,useRef} from 'react';
 import Login  from '@/components/login';
  
-const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout,contentRep}:ItemContentProps) => {
+const ItemContent = ({nombre,tipo,fetchExplorer,setIsDisabledLogout,contentRep}:ItemContentProps) => {
     const [selected, setSelected] = useState<boolean>(false);
     const [hovered, setHovered] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -59,7 +59,7 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout,c
                 return;
             }
         } else if (tipo === "file") {
-            let path = localStorage.getItem('path');
+            const path = localStorage.getItem('path');
             const response = await fetch('http://localhost:4005/contentFile', {
                 method: 'POST',
                 headers: {
@@ -81,10 +81,22 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout,c
             setContentFile(data.content);
             onOpenContent();
             return;
+        } else if (tipo === "image") {
+            const contentPage = `<html style="height: 100%;"><head><meta name="viewport" content="width=device-width, minimum-scale=0.1"><title>${nombre}</title></head><body style="margin: 0px; height: 100%; background-color: rgb(14, 14, 14);"><img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="${contentRep}"></body></html>`;
+            const newWindow = window.open();
+            newWindow?.document.write(contentPage);
+            newWindow?.focus();
+            return;
+        } else if (tipo === "plain") {
+            const contentPage = `<html><head><meta name="color-scheme" content="light dark"></head><body><pre style="word-wrap: break-word; white-space: pre-wrap;">${contentRep}</pre></body></html>`;
+            const newWindow = window.open();
+            newWindow?.document.write(contentPage);
+            newWindow?.focus();
+            return;
         }
         const path = localStorage.getItem('path');
         localStorage.setItem('path', `${path}${path === "/" ? "" : "/"}${nombre}`);
-        fetchExplorer();
+        fetchExplorer?.();
     }
 
     useEffect(() => {
@@ -110,7 +122,7 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout,c
         onDoubleClick={handleDoubleClick}
         ref={ref}
         display={'inline-grid'}
-        width={'10%'} 
+        width={'auto'} 
         justifyItems={'center'}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -127,7 +139,7 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout,c
         }
         <Text
             userSelect={'none'}
-            maxWidth={'100%'}
+            maxWidth={'3.8em'}
         >{nombre}</Text>
     </Box>
     <Modal isOpen={isOpen} onClose={onClose}
@@ -162,9 +174,9 @@ const ItemContent = ({nombre,tipo,setContent,fetchExplorer,setIsDisabledLogout,c
 type ItemContentProps = {
     nombre: string;
     tipo: string;
-    setContent?: any;
-    fetchExplorer?: any;
-    setIsDisabledLogout?: any;
+    setContent?: React.Dispatch<React.SetStateAction<Map<string, string>>>;
+    fetchExplorer?: () => Promise<void>;
+    setIsDisabledLogout?: React.Dispatch<React.SetStateAction<boolean>>;
     contentRep?: string;
 }
 

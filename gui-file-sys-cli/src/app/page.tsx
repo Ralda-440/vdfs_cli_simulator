@@ -11,13 +11,19 @@ const Terminal: React.FC = () => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const outputRef = useRef<HTMLDivElement>(null);
   const [comandos, setComandos] = useState<string[]>([]);
+  const [placeHolderInput, setPlaceHolderInput] = useState<string>('Ingrese Comando(s)');
+  const [isDisabledInput, setIsDisabledInput] = useState<boolean>(false);
 
   //UseEffect cuando cambiar el valor de comandos
   useEffect(() => {
     // Si no hay comandos, no hacer nada
     if (!comandos.length) {
+      setPlaceHolderInput('Ingrese Comando(s)');
+      setIsDisabledInput(false);
       return;
     }
+    setPlaceHolderInput('Ejecutando Comando(s)...');
+    setIsDisabledInput(true);
     // Obtener el primer comando de la lista de comandos y eliminarlo
     const comando = comandos.shift();
     // Fetch para enviar el comando al servidor
@@ -132,20 +138,23 @@ const Terminal: React.FC = () => {
         bg="black"
         color="white"
         height="45em"
-        width={'100%'}
+        width={'auto'}
+        maxWidth={'100%'}
         borderRadius="md"
         p={4}
         overflowY="auto"
         ref={outputRef}
         whiteSpace="pre-wrap"
       >
-        <Text maxWidth={'90em'}>{outputValue}</Text>
+        <Text
+        maxWidth={'50em'}>{outputValue}</Text>
         <Box display="flex" mt={2}>
           <Text color="green">{'>$'}</Text>
           <Textarea
+            isDisabled={isDisabledInput}
+            placeholder={placeHolderInput}
             ref={textAreaRef}
             value={inputValue}
-            placeholder="Ingrese Comando(s)"
             bg={'transparent'}
             style={{
               caretColor: 'white',

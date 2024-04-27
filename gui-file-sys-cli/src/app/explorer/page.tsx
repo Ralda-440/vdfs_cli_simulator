@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Box, IconButton, Input,Alert,AlertIcon,AlertTitle,AlertDescription, Button} from '@chakra-ui/react';
+import { Box, IconButton, Input,Button,Text} from '@chakra-ui/react';
 import { SlActionUndo } from 'react-icons/sl';
 import ItemContent from '@/components/item-content';
 
 const ExplorerPage = () => {
   const [inputpath, setInputpath] = useState<string>('/');
-  const [content, setContent] = useState<Content>({});
+  const [content, setContent] = useState<Map<string,string>>(new Map<string,string>());
   const [isDisabledLogout, setIsDisabledLogout] = useState<boolean>(true);
 
   useEffect(() => {
@@ -33,10 +33,6 @@ const ExplorerPage = () => {
         }
       });
   }, []);
-
-  type Content = {
-    [key : string]: string;
-  }
   
   type Error_ = {
     msg: string;
@@ -72,7 +68,9 @@ const ExplorerPage = () => {
       return;
     }
     setInputpath(path);
-    setContent(data.content);
+    const JSONData = JSON.stringify(data.content);
+    const objectData = JSON.parse(JSONData);
+    setContent(new Map(Object.entries(objectData)));
   };
 
   return (
@@ -143,10 +141,14 @@ const ExplorerPage = () => {
         padding={'1%'}
       >
         {
-          Object.keys(content).map((name) => {
+          content.size === 0 ? <Text
+            fontSize={'2xl'}
+            fontWeight={'bold'}
+          >No hay Contenido</Text> :
+          Array.from(content).map(([nombre,tipo]) => {
             return (
-              <ItemContent key={name} nombre={name} tipo={content[name]} setContent={setContent} fetchExplorer={fetchExplorer} setIsDisabledLogout={setIsDisabledLogout} /> 
-            );
+              <ItemContent key={nombre} nombre={nombre} tipo={tipo} setContent={setContent} fetchExplorer={fetchExplorer} setIsDisabledLogout={setIsDisabledLogout} /> 
+          )
           })
         }
       </Box>

@@ -118,7 +118,7 @@ mkfile -path=/home/archivos/user/docs/Tarea2.txt -size=768
 #Para este comando hay que crear un archivo en la computadora y en cont poner la ruta de ese archivo
 #Crear un archivo txt en su escritorio llamado IA
 
-mkfile -path=/home/archivos/user/docs/Tarea3.txt -cont=./IA.txt #-size=10 
+mkfile -path=/home/archivos/user/docs/Tarea3.txt -size=10 #-cont=./IA.txt 
 
 #mkfile -path="/home/archivos/noexiste/b1.txt" #ERRNO EXISTE RUTA
 
