@@ -129,7 +129,7 @@ const Terminal: React.FC = () => {
     if (outputRef.current) {
       outputRef.current.scrollTop = outputRef.current.scrollHeight;
     }
-  }, [outputValue]); // Scroll to bottom on outputValue change
+  }, [outputValue,isDisabledInput]); // Scroll to bottom on outputValue change
 
   return (
     <>

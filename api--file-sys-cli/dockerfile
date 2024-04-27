@@ -1,0 +1,35 @@
+#Version de goland
+
+FROM golang:latest
+
+#Destino de la app
+WORKDIR /app
+
+#Instalar go
+#RUN apt-get update
+#RUN apt-get upgrade
+#RUN apt-get install golang
+
+#Copiar el archivo go.mod y go.sum
+COPY go.mod go.sum .
+
+#Descargar las dependencias
+RUN go mod download
+RUN apt-get update && apt-get install -y graphviz
+
+#Copiar el resto de la app
+COPY Interprete ./Interprete
+COPY Parser ./Parser
+COPY Tools ./Tools
+COPY main.go .
+COPY go.mod .
+COPY go.sum .
+
+#Compilar la app
+RUN go build -o main main.go
+
+#Exponer el puerto 4005 de la api
+EXPOSE 4005
+
+#Ejecutar la app
+CMD ["/app/main"]
