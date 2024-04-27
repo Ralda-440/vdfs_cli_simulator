@@ -21,7 +21,7 @@ const ExplorerPage = () => {
     }
     fetchExplorer()
     //Verificar si hay Login Activo
-    fetch('http://localhost:4005/loginActivo', {
+    fetch('http://3.15.28.66:4005/loginActivo', {
       method: 'GET',
     })
       .then((res) => {
@@ -50,7 +50,7 @@ const ExplorerPage = () => {
     if (!path) {
       path = '/';
     }
-    const response = await fetch('http://localhost:4005/explorer', {
+    const response = await fetch('http://3.15.28.66:4005/explorer', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ const ExplorerPage = () => {
               const path = localStorage.getItem('path');
               const nameDisk = path?.split('/')[1] || '';
               localStorage.setItem('path', '/'+nameDisk);
-              await fetch('http://localhost:4005/logout', {
+              await fetch('http://3.15.28.66:4005/logout', {
                 method: 'GET',
               });
               await fetchExplorer();

@@ -27,7 +27,7 @@ const HeaderCli = () => {
               localStorage.setItem('path', '/');
               localStorage.setItem('outputValue', '');
               //Fetch para reiniciar CLI
-              fetch('http://localhost:4005/resetCLI', {
+              fetch('http://3.15.28.66:4005/resetCLI', {
                 method: 'GET',
                 headers: {
                   'Content-Type': 'application/json',

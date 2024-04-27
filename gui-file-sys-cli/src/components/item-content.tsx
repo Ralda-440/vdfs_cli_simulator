@@ -42,7 +42,7 @@ const ItemContent = ({nombre,tipo,fetchExplorer,setIsDisabledLogout,contentRep}:
     const handleDoubleClick = async () => { 
         if (tipo === "partition") {
             //router.push('/explorer/login');
-            const response = await fetch('http://localhost:4005/loginActivo', {
+            const response = await fetch('http://3.15.28.66:4005/loginActivo', {
                 method: 'GET',
             });
             const data = await response.json();
@@ -60,7 +60,7 @@ const ItemContent = ({nombre,tipo,fetchExplorer,setIsDisabledLogout,contentRep}:
             }
         } else if (tipo === "file") {
             const path = localStorage.getItem('path');
-            const response = await fetch('http://localhost:4005/contentFile', {
+            const response = await fetch('http://3.15.28.66:4005/contentFile', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

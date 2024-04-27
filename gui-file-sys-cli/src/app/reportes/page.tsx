@@ -17,7 +17,7 @@ const Reportes = () => {
 
   useEffect(() => {
     //fetchReportes();
-    fetch('http://localhost:4005/reportes', {
+    fetch('http://3.15.28.66:4005/reportes', {
       method: 'GET',
     })
       .then((res) => {

@@ -55,7 +55,7 @@ const Login = ({ namePart, onClose, fetchExplorer,setIsDisabledLogout }: LoginPr
     const path = localStorage.getItem('path');
     const disk = path?.split('/')[1];
     const nameDisk = disk?.split('.')[0];
-    const response = await fetch('http://localhost:4005/login', {
+    const response = await fetch('http://3.15.28.66:4005/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
