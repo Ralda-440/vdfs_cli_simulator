@@ -14,8 +14,10 @@ const Reportes = () => {
   }
 
   const [reportes, setReportes] = useState<ItemReporte[]>([]); 
+  const [msgContent, setMsgContent] = useState<string>('No hay Contenido');
 
   useEffect(() => {
+    setMsgContent('Cargando Contenido...');
     //fetchReportes();
     fetch('http://3.15.28.66:4005/reportes', {
       method: 'GET',
@@ -25,6 +27,9 @@ const Reportes = () => {
       })
       .then((data) => {
         setReportes(data.files);
+        if(data.files.length === 0){
+          setMsgContent('No hay Reportes');
+        }
       });
   }, []);
 
@@ -37,7 +42,7 @@ const Reportes = () => {
         reportes.length === 0 ? <Text
           fontSize={'2xl'}
           fontWeight={'bold'}
-        >No hay Reportes Creados</Text> :
+        >{msgContent}</Text> :
         reportes.map((reporte:ItemReporte) => {
           return (
           <>

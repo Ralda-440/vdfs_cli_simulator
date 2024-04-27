@@ -44,9 +44,10 @@ const HeaderCli = () => {
                         return element + '\n';
                       }),
                     );
+                  } else {
+                    window.location.reload();
                   }
                 });
-              window.location.reload();
             }}
           />
         </div>
