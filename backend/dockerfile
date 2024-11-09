@@ -11,7 +11,7 @@ WORKDIR /app
 #RUN apt-get install golang
 
 #Copiar el archivo go.mod y go.sum
-COPY go.mod go.sum .
+COPY go.mod go.sum ./
 
 #Descargar las dependencias
 RUN go mod download

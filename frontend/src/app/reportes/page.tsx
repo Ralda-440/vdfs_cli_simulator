@@ -19,7 +19,7 @@ const Reportes = () => {
   useEffect(() => {
     setMsgContent('Cargando Contenido...');
     //fetchReportes();
-    fetch('http://3.15.28.66:4005/reportes', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/reportes`, {
       method: 'GET',
     })
       .then((res) => {

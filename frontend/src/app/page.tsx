@@ -27,7 +27,7 @@ const Terminal: React.FC = () => {
     // Obtener el primer comando de la lista de comandos y eliminarlo
     const comando = comandos.shift();
     // Fetch para enviar el comando al servidor
-    fetch('http://3.15.28.66:4005/inputCLI', {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/inputCLI`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
