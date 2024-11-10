@@ -5,13 +5,13 @@ FROM node:latest
 WORKDIR /app
 
 # Copiar el archivo package.json
-# COPY package.json .
-
-# Copiar la aplicación
-COPY . .
+COPY package.json .
 
 # Instalar dependencias
 RUN npm install
+
+# Copiar la aplicación
+COPY . .
 
 # Construir la aplicación
 RUN npm run build
