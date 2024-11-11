@@ -1,14 +1,8 @@
 #Version de goland
-
-FROM golang:latest
+FROM golang:alpine3.20
 
 #Destino de la app
 WORKDIR /app
-
-#Instalar go
-#RUN apt-get update
-#RUN apt-get upgrade
-#RUN apt-get install golang
 
 #Copiar el archivo go.mod y go.sum
 COPY go.mod go.sum ./
@@ -30,6 +24,9 @@ RUN go build -o main main.go
 
 #Exponer el puerto 4005 de la api
 EXPOSE 4005
+
+#Variables de entorno PORT
+ENV PORT=4005
 
 #Ejecutar la app
 CMD ["/app/main"]

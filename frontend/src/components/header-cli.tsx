@@ -5,7 +5,9 @@ import React from 'react';
 import { IconButton } from '@chakra-ui/react';
 import { HiOutlineRefresh } from 'react-icons/hi';
 
-const HeaderCli = () => {
+import {requestRest} from '@/services/request.service'
+
+function HeaderCli ({ setOutputValue } : {setOutputValue: React.Dispatch<React.SetStateAction<string> >}) {
   return (
     <div>
       <div className="flex h-[47px] items-center justify-between">
@@ -22,20 +24,13 @@ const HeaderCli = () => {
             variant={'outline'}
             colorScheme="blackAlpha"
             size={'lg'}
-            onClick={() => {
+            onClick={async () => {
               //Limpiar el LocalStorage outputValue, path
               localStorage.setItem('path', '/');
               localStorage.setItem('outputValue', '');
+              setOutputValue('');
               //Fetch para reiniciar CLI
-              fetch(`${process.env.NEXT_PUBLIC_API_URL}/resetCLI`, {
-                method: 'GET',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-              })
-                .then((res) => {
-                  return res.json();
-                })
+              requestRest('GET', '/resetCLI', {})
                 .then((data) => {
                   //Si hay errores, mostrarlos en una alerta
                   if (data.errs.length) {
@@ -44,8 +39,6 @@ const HeaderCli = () => {
                         return element + '\n';
                       }),
                     );
-                  } else {
-                    window.location.reload();
                   }
                 });
             }}

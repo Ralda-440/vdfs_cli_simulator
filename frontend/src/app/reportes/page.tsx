@@ -3,6 +3,7 @@
 import React, {useEffect,useState} from 'react';
 import { Box,Text } from '@chakra-ui/react';
 import ItemContent from '@/components/item-content';
+import { requestRest } from '@/services/request.service';
 
 const Reportes = () => {
 
@@ -19,12 +20,7 @@ const Reportes = () => {
   useEffect(() => {
     setMsgContent('Cargando Contenido...');
     //fetchReportes();
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/reportes`, {
-      method: 'GET',
-    })
-      .then((res) => {
-        return res.json();
-      })
+    requestRest('GET', '/reportes', null)
       .then((data) => {
         setReportes(data.files);
         if(data.files.length === 0){

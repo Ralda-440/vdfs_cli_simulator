@@ -28,6 +28,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { FaLock, FaUserAlt } from 'react-icons/fa';
+import { requestRest } from '@/services/request.service';
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -55,19 +56,14 @@ const Login = ({ namePart, onClose, fetchExplorer,setIsDisabledLogout }: LoginPr
     const path = localStorage.getItem('path');
     const disk = path?.split('/')[1];
     const nameDisk = disk?.split('.')[0];
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+    const data = await requestRest('POST', '/login', 
+      {
         usr: user,
         pwd: password,
         diskName: nameDisk,
         partName: namePart,
-      }),
-    });
-    const data = await response.json();
+      }
+    );
     if (data.errs != null && data.errs.length > 0) {
       setMsgAlert(data.errs
         .map((err: Error_) => {

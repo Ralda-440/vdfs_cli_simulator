@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, IconButton, Input,Button,Text} from '@chakra-ui/react';
 import { SlActionUndo } from 'react-icons/sl';
 import ItemContent from '@/components/item-content';
+import { requestRest } from '@/services/request.service';
 
 const ExplorerPage = () => {
   const [inputpath, setInputpath] = useState<string>('/');
@@ -21,12 +22,7 @@ const ExplorerPage = () => {
     }
     fetchExplorer()
     //Verificar si hay Login Activo
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/loginActivo`, {
-      method: 'GET',
-    })
-      .then((res) => {
-        return res.json();
-      })
+    requestRest('GET', '/loginActivo', null)
       .then((data) => {
         if (data.activo) {
           setIsDisabledLogout(false);
@@ -50,16 +46,11 @@ const ExplorerPage = () => {
     if (!path) {
       path = '/';
     }
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/explorer`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+    const data = await requestRest('POST', '/explorer', 
+      {
         path: path,
-      }),
-    });
-    const data = await response.json();
+      }
+    );
     if (data.errs != null && data.errs.length > 0) {
       alert(data.errs.map((element:Error_) => {
         return element.msg;
@@ -129,9 +120,7 @@ const ExplorerPage = () => {
               const path = localStorage.getItem('path');
               const nameDisk = path?.split('/')[1] || '';
               localStorage.setItem('path', '/'+nameDisk);
-              await fetch(`${process.env.NEXT_PUBLIC_API_URL}/logout`, {
-                method: 'GET',
-              });
+              await requestRest('GET', '/logout', null);
               await fetchExplorer();
             }}
           >Logout</Button>

@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 
 import HeaderCli from '@/components/header-cli';
 import { Box, Text, Textarea } from '@chakra-ui/react';
+import { requestRest } from '@/services/request.service';
 
-const Terminal: React.FC = () => {
+function Terminal () {
   const [inputValue, setInputValue] = useState<string>('');
   const [outputValue, setOutputValue] = useState<string>('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -27,16 +28,7 @@ const Terminal: React.FC = () => {
     // Obtener el primer comando de la lista de comandos y eliminarlo
     const comando = comandos.shift();
     // Fetch para enviar el comando al servidor
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/inputCLI`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        input: comando, 
-      }),
-    })
-      .then((res) => res.json())
+    requestRest('POST', '/inputCLI', {input: comando})
       .then((data) => {
         // Agregar los errores al output
         //console.log(data);
@@ -133,7 +125,7 @@ const Terminal: React.FC = () => {
 
   return (
     <>
-      <HeaderCli />
+      <HeaderCli setOutputValue={setOutputValue}/>
       <Box
         bg="black"
         color="white"

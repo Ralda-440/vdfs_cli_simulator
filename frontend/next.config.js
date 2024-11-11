@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     //output: "export",
-    cache: false,
+    experimental: {
+        serverActions: true,
+    },
 };
 
 module.exports = nextConfig;

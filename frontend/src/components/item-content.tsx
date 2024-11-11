@@ -16,6 +16,7 @@ import { BiSolidFileTxt } from "react-icons/bi";
 import { GoFileDirectoryFill } from "react-icons/go";
 import { useState, useEffect ,useRef} from 'react';
 import Login  from '@/components/login';
+import { requestRest } from '@/services/request.service'
  
 const ItemContent = ({nombre,tipo,fetchExplorer,setIsDisabledLogout,contentRep}:ItemContentProps) => {
     const [selected, setSelected] = useState<boolean>(false);
@@ -41,11 +42,7 @@ const ItemContent = ({nombre,tipo,fetchExplorer,setIsDisabledLogout,contentRep}:
 
     const handleDoubleClick = async () => { 
         if (tipo === "partition") {
-            //router.push('/explorer/login');
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/loginActivo`, {
-                method: 'GET',
-            });
-            const data = await response.json();
+            const data = await requestRest('GET', '/loginActivo', null);
             if (data.activo) {
                 const path = localStorage.getItem('path');
                 const disk = path?.split('/')[1];
@@ -60,16 +57,11 @@ const ItemContent = ({nombre,tipo,fetchExplorer,setIsDisabledLogout,contentRep}:
             }
         } else if (tipo === "file") {
             const path = localStorage.getItem('path');
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contentFile`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
+            const data = await requestRest('POST', '/contentFile', 
+                {
                     path: path+"/"+nombre,
-                }),
-            });
-            const data = await response.json();
+                }
+            );
             if ( data.errs !== null && data.errs.length > 0) {
                 alert(
                     data.errs.map((err: Error_) => {
