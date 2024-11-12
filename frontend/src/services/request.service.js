@@ -1,14 +1,15 @@
 'use server'
 
 export async function requestRest(type, endpoint, body) {
-    //console.log(process.env.API_URL,"este es el api url");
-    const response = await fetch(`${process.env.API_URL}/${endpoint}`, {
+    const response = await fetch(`${process.env.API_URL}${endpoint}`, {
         method: type,
-        headers: {
+        headers: type === 'GET' ? undefined : {
           'Content-Type': 'application/json',
         },
         body: type === 'GET' ? undefined : JSON.stringify(body),
+        cache: 'no-store',
       }
     );
-    return response.json();
+    const data = await response.json();
+    return data;
 }

@@ -25,8 +25,5 @@ RUN go build -o main main.go
 #Exponer el puerto 4005 de la api
 EXPOSE 4005
 
-#Variables de entorno PORT
-ENV PORT=4005
-
 #Ejecutar la app
 CMD ["/app/main"]
