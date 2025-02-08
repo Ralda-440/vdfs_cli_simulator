@@ -8,7 +8,7 @@ Los comandos que se utilizan en la **cli** son reconocidos por un analizador en 
 
 Los archivos binarios se crean y manipulan en el Backend.
 
-La aplicación web se encuentra desplegada en la plataforma **Cloud Run** de **Google Cloud**. [Acceda aquí](https://vdfs-cli-simulator-gui-5320668054.us-east4.run.app)
+La aplicación web se encuentra desplegada en la plataforma **Cloud Run** de **Google Cloud**. [Acceda aquí](https://vdfs-cli-simulator-gui-1044610917401.us-central1.run.app)
 
 ## Arquitectura
 
